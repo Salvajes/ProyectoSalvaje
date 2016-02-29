@@ -3,9 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <title>Salvajes</title>
+    <style>
+
+        .first {
+            background-color: #05668D;
+        }
+        .second {
+            background-color: #028090;
+        }
+        .third {
+            background-color: #00A896;
+        }
+        .fourth {
+            background-color: #02C39A;
+        }
+        .fifth {
+            background-color: #F0F3BD;
+        }
+
+
+        body {
+            margin: 0px;
+            padding: 0px;
+            background-color: #F0F3BD;
+        }
+        ul{
+            list-style: none;
+            margin: 0px;
+            padding: 0px;
+        }
+        .header {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            height: 70px;
+        }
+        .header__logo {
+            flex-grow: 1;
+        }
+        .header__nav {
+            width: 25%;
+        }
+        .nav__list {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+        }
+        .nav__item {
+            color: #F0F3BD;
+        }
+        .nav__item:hover {
+            cursor: pointer;
+            color: rgba(240,243,191, 0.8)
+        }
+    </style>
 </head>
 <body>
-    <h1>Salvajes</h1>
-    <h3>Que onda</h3>
+    <header class="header first">
+        <div class="header__logo">Salvajes</div>
+        <nav class="header__nav">
+            <ul class="nav__list">
+                <li class="nav__item">Galeria</li>
+                <li class="nav__item">Cómo Comprar?</li>
+                <li class="nav__item">Paquetes</li>
+                <li class="nav__item">Promociones</li>
+            </ul>
+        </nav>
+    </header>
+    <main class="main">
+        <section>
+            <div class="promociones">
+                Marzo
+            </div>
+        </section>
+    </main>
+    <footer>
+        pie de página
+    </footer>
 </body>
 </html>
