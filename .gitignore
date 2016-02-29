@@ -1,0 +1,5 @@
+# Symfony directories
+vendor/*
+*/logs/*
+*/cache/*
+.idea/
