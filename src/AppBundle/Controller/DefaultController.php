@@ -16,4 +16,12 @@ class DefaultController extends Controller
         // replace this example code with whatever you need
         return $this->render('AppBundle::index.html.twig');
     }
+
+    /**
+     * @Route("/nosotros", name="about_us")
+     */
+    public function aboutUsAction(Request $request)
+    {
+        return $this->render('AppBundle:nosotros.html.twig');
+    }
 }

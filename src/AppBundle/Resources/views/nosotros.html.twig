@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Nosotros</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset("bundles/app/css/style-icons.css") }}">
+    <style>
+        html, body{
+            padding: 0px;
+            margin: 0px;
+            font-size: 16px;
+        }
+        ul {
+            padding: 0px;
+            margin: 0px;
+            list-style: none;
+        }
+        .icon {
+            font-size: 1.5rem;
+        }
+        .icon:hover {
+            cursor: pointer;
+            color: rgba(51,51,51, 0.54);
+        }
+
+        .glyphicon-home:hover {
+            color: #00A896;
+        }
+        .glyphicon-heart:hover {
+            color: red;
+        }
+        .glyphicon-sunglasses:hover {
+            color: black;
+        }
+        .glyphicon-book:hover {
+            color: blue;
+        }
+
+        .sidenav {
+            height: 100%;
+            width: 0px;
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            background-color: rgba(51, 51, 51, 0.84);
+            overflow-x: hidden;
+            -webkit-transition: 0.5s;
+            -moz-transition: 0.5s;
+            -ms-transition: 0.5s;
+            -o-transition: 0.5s;
+            transition: 0.5s;
+        }
+        .sidenav_list {
+            display: flex;
+            flex-direction: column;
+        }
+        .sidenav_list_li {
+            font-size: 1.3rem;
+            color: white;
+            border-radius: 3px;
+            margin: 6px;
+            padding: 5px;
+        }
+        .sidenav_list_li:hover {
+            cursor: pointer;
+            background-color: rgba(0, 168, 150, 0.84);
+
+        }
+        .li-icon {
+            margin-right: 10px;
+        }
+        .main {
+            -webkit-transition: margin-left 0.5s;
+            -moz-transition: margin-left 0.5s;
+            -ms-transition: margin-left 0.5s;
+            -o-transition: margin-left 0.5s;
+            transition: margin-left 0.5s;
+        }
+        .header {
+            padding: 10px;
+            height: 60px;
+            background-color: #00A896;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+        }
+        .header_logo {
+            display: flex;
+            align-items: center;
+            flex-grow: 3;
+        }
+        .logo {
+            margin-left: 10px;
+            font-size: 2rem;
+            font-family: "Helvetica"
+        }
+        .header_social {
+            flex-grow: 1;
+        }
+        .header_social_list {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+        }
+        .header_social_list_li {
+            cursor: pointer;
+        }
+        #svg {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <nav class="sidenav">
+        <ul class="sidenav_list">
+            <li class="sidenav_list_li"><span class="li-icon glyphicon glyphicon-home"></span>Home</li>
+            <li class="sidenav_list_li"><span class="li-icon glyphicon glyphicon-heart"></span>Nosotros</li>
+            <li class="sidenav_list_li"><span class="li-icon glyphicon glyphicon-sunglasses"></span>Productos</li>
+            <li class="sidenav_list_li"><span class="li-icon glyphicon glyphicon-book"></span>Blog</li>
+        </ul>
+    </nav>
+
+    <main class="main">
+        <header class="header">
+            <div class="header_logo">
+                <span class="header_hamburger icon glyphicon glyphicon-th-list"></span>
+                <span class="logo">
+                    Salvajes
+                </span>
+            </div>
+            <div class="header_social">
+                <ul class="header_social_list">
+                    <li class="header_social_list_li"><span class="icon icon-facebook2"></span></li>
+                    <li class="header_social_list_li"><span class="icon icon-twitter"></span></li>
+                    <li class="header_social_list_li"><span class="icon icon-instagram"></span></li>
+                </ul>
+            </div>
+        </header>
+        <div class="title">Quiénes somos?</div>
+        <section>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            Cupiditate deleniti dignissimos dolor eius, fugit magnam obcaecati quod velit.
+            Ad amet ea harum neque non praesentium reiciendis ullam vitae! Incidunt, vitae.
+        </section>
+    </main>
+
+    <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script>
+        function openNav() {
+            $(".sidenav").css({"width": "240px"});
+            $(".main").css({"margin-left": "240px"});
+        }
+        function closeNav() {
+            $(".sidenav").css({"width": "0px"});
+            $(".main").css({"margin-left": "0px"});
+        }
+        $(document).ready(function(){
+            isOpen = false;
+            $(".glyphicon-th-list").click(function(){
+                if(!isOpen) {
+                    openNav();
+                    isOpen = true;
+                } else {
+                    closeNav();
+                    isOpen = false;
+                }
+
+            })
+        });
+    </script>
+</body>
+</html>
