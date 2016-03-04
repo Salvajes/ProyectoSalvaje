@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Salvajes</title>
+    <link rel="stylesheet" href="{{ asset("bundles/app/css/style-icons.css") }}">
+    <link rel="stylesheet" href="{{ asset('bundles/app/css/bootstrap.min.css') }}">
+    <style>
+        .container{
+            height: 180px;
+        }
+        .parallax-container{
+            height: 600px;
+        }
+        .header_social_list {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+            width: 200px;
+        }
+        .header_social_list_li {
+            cursor: pointer;
+
+        }
+        .icon {
+            font-size: 2.5rem;
+
+        }
+        .icon:hover {
+            cursor: pointer;
+            color: rgba(51,51,51, 0.54);
+        }
+        .button1{
+            background-color: white;
+            color: black;
+            border: 2px solid #D8E2DC;
+            transition-duration: 0.4s;
+        }
+        .button1:hover{
+            background-color: #D8E2DC;
+            color: white;
+        }
+        .button2{
+            background-color: white;
+            color: black;
+            border: 2px solid #FFE5D9;
+            transition-duration: 0.4s;
+        }
+        .button2:hover{
+            background-color: #FFE5D9;
+            color: white;
+        }
+        .button3{
+            background-color: white;
+            color: black;
+            border: 2px solid #FFCAD4;
+            transition-duration: 0.4s;
+        }
+        .button3:hover{
+            background-color: #FFCAD4;
+            color: white;
+        }
+        .button4{
+            background-color: white;
+            color: black;
+            border: 2px solid #FFCDB2;
+            transition-duration: 0.4s;
+        }
+        .button4:hover{
+            background-color: #FFCDB2;
+            color: white;
+        }
+        .button5{
+            background-color: white;
+            color: black;
+            border: 2px solid #FFB4A2;
+            transition-duration: 0.4s;
+        }
+        .button5:hover{
+            background-color: #FFB4A2;
+            color: white;
+        }
+        .button6{
+            background-color: white;
+            color: black;
+            border: 2px solid #F4ACB7;
+            transition-duration: 0.4s;
+        }
+        .button6:hover{
+            background-color: #F4ACB7;
+            color: white;
+        }
+        .button7{
+            background-color: white;
+            color: black;
+            border: 2px solid #E5989B;
+            transition-duration: 0.4s;
+        }
+        .button7:hover{
+            background-color: #E5989B;
+            color: white;
+        }
+        .button8{
+            background-color: white;
+            color: black;
+            border: 2px solid #B5838D;
+            transition-duration: 0.4s;
+        }
+        .button8:hover{
+            background-color: #B5838D;
+            color: white;
+        }
+        .container1 {
+            display: flex;
+            justify-content: space-around;
+            align-content: center;
+            margin-bottom: 20px;
+        }
+        ul {
+            margin: 0px;
+            padding: 0px;
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+
+    <section>
+        <div class="container1">
+            <div class="header_buttons">
+                <img src="{{ asset('bundles/app/images/salvajes.png') }}"/>
+                <button class="button1">Proyectos</button>
+                <button class="button2">Que ofrecemos</button>
+                <button class="button3">Paquetes</button>
+                <button class="button4">Promociones</button>
+                <button class="button5">Como Comprar</button>
+                <button class="button6">Blog</button>
+                <button class="button7">Contacto</button>
+                <button class="button8">Nosotros</button>
+            </div>
+            <ul class="header_social_list">
+                <li class="header_social_list_li"><span class="icon icon-facebook2"></span></li>
+                <li class="header_social_list_li"><span class="icon icon-twitter"></span></li>
+                <li class="header_social_list_li"><span class="icon icon-instagram"></span></li>
+            </ul>
+        </div>
+    </section>
+    <main class="main">
+        {% block main %}
+        {% endblock %}
+    </main>
+
+    <script src="{{ asset('bundles/app/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('bundles/app/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('bundles/app/js/parallax.min.js') }}"></script>
+    {% block script %}
+    {% endblock %}
+</body>
+</html>

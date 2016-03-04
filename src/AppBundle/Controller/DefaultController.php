@@ -18,10 +18,10 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/nosotros", name="about_us")
+     * @Route("/about-us", name="about_us")
      */
     public function aboutUsAction(Request $request)
     {
-        return $this->render('AppBundle:nosotros.html.twig');
+        return $this->render('AppBundle::aboutUs.html.twig');
     }
 }
