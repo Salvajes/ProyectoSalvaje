@@ -1,0 +1,65 @@
+{% extends "AppBundle::base.html.twig" %}
+
+{% block styles %}
+    <style>
+        .see_more {
+            color: #0566bd;
+            font-size: 1.6rem;
+            cursor: pointer;
+        }
+        .info {
+            height: 200px;
+            padding: 50px 50px;
+            display: flex;
+            flex-direction: column;
+        }
+        .info--der {
+            align-items: flex-end;
+            text-align: end;
+        }
+        .info--izq {
+            align-items: flex-start;
+        }
+        .info_paragraph {
+            width: 50%;
+            font-size: 2.4rem;
+        }
+
+    </style>
+{% endblock %}
+{% block main %}
+    <section class="parallax-container" data-parallax="scroll" data-position="top" data-bleed="10"
+         data-image-src="{{ asset('bundles/app/images/mac-book.jpg') }}" data-natural-width="1400"
+         data-natural-height="900">
+
+    </section>
+
+    <section class="info info--der">
+        <div class="info_paragraph">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            Adipisci alias amet aperiam consequuntur dolor ducimus eos et, exercitationem
+        </div>
+        <div class="see_more">
+            Ver más...
+        </div>
+    </section>
+
+    <section class="parallax-container" data-parallax="scroll" data-position="top" data-bleed="10"
+         data-image-src="{{ asset('bundles/app/images/intro-imac.jpg') }}" data-natural-width="1400"
+         data-natural-height="900">
+    </section>
+    <section class="info info--izq">
+        <div class="info_paragraph">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            Adipisci alias amet aperiam consequuntur dolor ducimus eos et, exercitationem
+        </div>
+        <div class="see_more">
+            Ver más...
+        </div>
+    </section>
+
+    <section class="parallax-container" data-parallax="scroll" data-position="top" data-bleed="10"
+             data-image-src="{{ asset('bundles/app/images/mac-book.jpg') }}" data-natural-width="1400"
+             data-natural-height="900">
+    </section>
+{% endblock %}

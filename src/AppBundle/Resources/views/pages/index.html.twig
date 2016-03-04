@@ -1,0 +1,27 @@
+{% extends "AppBundle::base.html.twig" %}
+
+{%  block main %}
+    <div class="parallax-container" data-parallax="scroll" data-position="top" data-bleed="10"
+         data-image-src="{{ asset('bundles/app/images/tacos.jpg') }}" data-natural-width="1400"
+         data-natural-height="900">
+
+    </div>
+
+    <section>
+        <div class="container">
+            <h1>Los tacos dan mas energia que los hamsters,
+                <small>(se venden hamster por separado)</small>
+            </h1>
+        </div>
+    </section>
+
+    <div class="parallax-container" data-parallax="scroll" data-position="top" data-bleed="10"
+         data-image-src="{{ asset('bundles/app/images/hamster.jpg') }}" data-natural-width="1400"
+         data-natural-height="900">
+    </div>
+{% endblock %}
+{% block script %}
+    <script>
+
+    </script>
+{% endblock %}
