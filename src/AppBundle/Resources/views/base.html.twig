@@ -7,137 +7,7 @@
     <title>Salvajes</title>
     <link rel="stylesheet" href="{{ asset("bundles/app/css/style-icons.css") }}">
     <link rel="stylesheet" href="{{ asset('bundles/app/css/bootstrap.min.css') }}">
-    <style>
-        .container{
-            height: 180px;
-        }
-        .parallax-container{
-            height: 600px;
-        }
-        .button1{
-            background-color: white;
-            color: black;
-            border: 2px solid #D8E2DC;
-            transition-duration: 0.4s;
-        }
-        .button1:hover{
-            background-color: #D8E2DC;
-            color: white;
-        }
-        .button2{
-            background-color: white;
-            color: black;
-            border: 2px solid #FFE5D9;
-            transition-duration: 0.4s;
-        }
-        .button2:hover{
-            background-color: #FFE5D9;
-            color: white;
-        }
-        .button3{
-            background-color: white;
-            color: black;
-            border: 2px solid #FFCAD4;
-            transition-duration: 0.4s;
-        }
-        .button3:hover{
-            background-color: #FFCAD4;
-            color: white;
-        }
-        .button4{
-            background-color: white;
-            color: black;
-            border: 2px solid #FFCDB2;
-            transition-duration: 0.4s;
-        }
-        .button4:hover{
-            background-color: #FFCDB2;
-            color: white;
-        }
-        .button5{
-            background-color: white;
-            color: black;
-            border: 2px solid #FFB4A2;
-            transition-duration: 0.4s;
-        }
-        .button5:hover{
-            background-color: #FFB4A2;
-            color: white;
-        }
-        .button6{
-            background-color: white;
-            color: black;
-            border: 2px solid #F4ACB7;
-            transition-duration: 0.4s;
-        }
-        .button6:hover{
-            background-color: #F4ACB7;
-            color: white;
-        }
-        .button7{
-            background-color: white;
-            color: black;
-            border: 2px solid #E5989B;
-            transition-duration: 0.4s;
-        }
-        .button7:hover{
-            background-color: #E5989B;
-            color: white;
-        }
-        .button8{
-            background-color: white;
-            color: black;
-            border: 2px solid #B5838D;
-            transition-duration: 0.4s;
-        }
-        .button8:hover{
-            background-color: #B5838D;
-            color: white;
-        }
-        .logo-img {
-            width: 80px;
-        }
-        .header {
-            position: fixed;
-            height:70px;
-            top: 0;
-            left: 0;
-            right: 0;
-            background-color: white;
-            box-shadow: 0 1px 12px -3px rgba(0,0,0,0.3);
-        }
-        .header_wrap {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            align-content: center;
-            margin-bottom: 20px;
-        }
-        .header_social_list {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-around;
-            align-items: center;
-            width: 200px;
-        }
-        .header_social_list_li {
-            cursor: pointer;
-
-        }
-        .icon {
-            font-size: 2.5rem;
-
-        }
-        .icon:hover {
-            cursor: pointer;
-            color: rgba(51,51,51, 0.54);
-        }
-        ul {
-            margin: 0px;
-            padding: 0px;
-            list-style: none;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ asset('bundles/app/css/base-styles.css') }} ">
     {% block styles %}
     {% endblock %}
 </head>
@@ -145,15 +15,17 @@
     <header class="header">
         <div class="header_wrap">
             <div class="header_buttons">
-                <img src="{{ asset('bundles/app/images/salvajes.png') }}" class="logo-img"/>
-                <button class="button1">Proyectos</button>
-                <button class="button2">Que ofrecemos</button>
-                <button class="button3">Paquetes</button>
-                <button class="button4">Promociones</button>
-                <button class="button5">Como Comprar</button>
-                <button class="button6">Blog</button>
-                <button class="button7">Contacto</button>
-                <button class="button8">Nosotros</button>
+                <a href="{{ path('homepage') }}">
+                    <img src="{{ asset('bundles/app/images/salvajes.png') }}" class="logo-img"/>
+                </a>
+                <button onclick="window.location.href='{{ path('projects') }}'" class="button1">Proyectos</button>
+                <button onclick="window.location.href='{{ path('what_we_offer') }}'" class="button2">Que ofrecemos</button>
+                <button onclick="window.location.href='{{ path('packages') }}'" class="button3">Paquetes</button>
+                <button onclick="window.location.href='{{ path('promos') }}'" class="button4">Promociones</button>
+                <button onclick="window.location.href='{{ path('how_to_buy') }}'" class="button5">Como Comprar</button>
+                <button onclick="window.location.href='{{ path('blog') }}'" class="button6">Blog</button>
+                <button onclick="window.location.href='{{ path('contact') }}'" class="button7">Contacto</button>
+                <button onclick="window.location.href='{{ path('about_us') }}'" class="button8">Nosotros</button>
             </div>
             <ul class="header_social_list">
                 <li class="header_social_list_li"><span class="icon icon-facebook2"></span></li>
@@ -166,10 +38,18 @@
         {% block main %}
         {% endblock %}
     </main>
+    <footer class="footer">
+        <div class="container footer_container">
+            <span class="company">Salvajes SA de CV &copy; 2016</span>
+        </div>
+    </footer>
 
     <script src="{{ asset('bundles/app/js/jquery.min.js') }}"></script>
     <script src="{{ asset('bundles/app/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('bundles/app/js/parallax.min.js') }}"></script>
+    <script>
+
+    </script>
     {% block script %}
     {% endblock %}
 </body>
