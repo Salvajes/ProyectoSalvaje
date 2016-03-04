@@ -1,18 +1,28 @@
 {% extends "AppBundle::base.html.twig" %}
 
+{% block styles %}
+    <style>
+        .section-info {
+            height: 200px;
+            padding: 20px;
+        }
+    </style>
+{% endblock %}
 {% block main %}
-    <div class="parallax-container" data-parallax="scroll" data-position="top" data-bleed="10"
-         data-image-src="{{ asset('bundles/app/images/tacos.jpg') }}" data-natural-width="1400"
+    <section class="parallax-container" data-parallax="scroll" data-position="top" data-bleed="10"
+         data-image-src="{{ asset('bundles/app/images/mac-book.jpg') }}" data-natural-width="1400"
          data-natural-height="900">
-    </div>
-    <section>
-        <div class="container">
-            <h1>Los tacos dan mas energia que los hamsters, <small>(se venden hamster por separado)</small></h1>
-        </div>
+
     </section>
 
-    <div class="parallax-container" data-parallax="scroll" data-position="top" data-bleed="10"
-         data-image-src="{{ asset('bundles/app/images/hamster.jpg') }}" data-natural-width="1400"
+    <section class="section-info">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium dolorem ducimus,
+            eaque nostrum odit sapiente tempora. Aliquam asperiores at cumque eaque et ipsa iste
+            laborum omnis, optio pariatur qui repudiandae!</p>
+    </section>
+
+    <section class="parallax-container" data-parallax="scroll" data-position="top" data-bleed="10"
+         data-image-src="{{ asset('bundles/app/images/intro-imac.jpg') }}" data-natural-width="1400"
          data-natural-height="900">
-    </div>
+    </section>
 {% endblock %}
