@@ -2,18 +2,23 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Nosotros</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset("bundles/app/css/style-icons.css") }}">
+    <link rel="stylesheet" href="{{ asset('bundles/app/css/bootstrap.min.css') }}">
+    <script src="{{ asset('bundles/app/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('bundles/app/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('bundles/app/js/parallax.min.js') }}"></script>
     <style>
         html, body{
-            padding: 0px;
-            margin: 0px;
+            padding: 0;
+            margin: 0;
             font-size: 16px;
         }
         ul {
-            padding: 0px;
-            margin: 0px;
+            padding: 0;
+            margin: 0;
             list-style: none;
         }
         .icon {
@@ -39,10 +44,10 @@
 
         .sidenav {
             height: 100%;
-            width: 0px;
+            width: 0;
             position: fixed;
-            top: 0px;
-            left: 0px;
+            top: 0;
+            left: 0;
             background-color: rgba(51, 51, 51, 0.84);
             overflow-x: hidden;
             -webkit-transition: 0.5s;
@@ -110,22 +115,29 @@
         #svg {
             color: red;
         }
+        .container{
+            height: 300px;
+        }
+        .parallax-container{
+            height: 600px;
+
+        }
     </style>
 </head>
 <body>
     <nav class="sidenav">
         <ul class="sidenav_list">
-            <li class="sidenav_list_li"><span class="li-icon glyphicon glyphicon-home"></span>Home</li>
-            <li class="sidenav_list_li"><span class="li-icon glyphicon glyphicon-heart"></span>Nosotros</li>
-            <li class="sidenav_list_li"><span class="li-icon glyphicon glyphicon-sunglasses"></span>Productos</li>
-            <li class="sidenav_list_li"><span class="li-icon glyphicon glyphicon-book"></span>Blog</li>
+            <li class="sidenav_list_li"><span class="li-icon icon-home"></span>Home</li>
+            <li class="sidenav_list_li"><span class="li-icon icon-heart"></span>Nosotros</li>
+            <li class="sidenav_list_li"><span class="li-icon icon-headphones"></span>Productos</li>
+            <li class="sidenav_list_li"><span class="li-icon icon-book"></span>Blog</li>
         </ul>
     </nav>
 
     <main class="main">
         <header class="header">
             <div class="header_logo">
-                <span class="header_hamburger icon glyphicon glyphicon-th-list"></span>
+                <span class="header_hamburger icon icon-menu"></span>
                 <span class="logo">
                     Salvajes
                 </span>
@@ -144,21 +156,39 @@
             Cupiditate deleniti dignissimos dolor eius, fugit magnam obcaecati quod velit.
             Ad amet ea harum neque non praesentium reiciendis ullam vitae! Incidunt, vitae.
         </section>
+        <div class="parallax-container" data-parallax="scroll" data-position="top" data-bleed="10"
+             data-image-src="{{ asset('bundles/app/images/tacos.jpg') }}" data-natural-width="1400"
+             data-natural-height="900">
+        </div>
+        <section>
+            <div class="container">
+                <h1>Los tacos dan mas energia que los hamsters, <small>(se venden hamster por separado)</small></h1>
+            </div>
+        </section>
+
+        <div class="parallax-container" data-parallax="scroll" data-position="top" data-bleed="10"
+             data-image-src="{{ asset('bundles/app/images/hamster.jpg') }}" data-natural-width="1400"
+             data-natural-height="900">
+        </div>
     </main>
 
-    <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="{{ asset('bundles/app/js/jquery-1.12.0.min.js') }}"></script>
     <script>
         function openNav() {
             $(".sidenav").css({"width": "240px"});
             $(".main").css({"margin-left": "240px"});
+            $(".parallax-container").css({"margin-left": "240px"});
+            $(".container").css({"margin-left": "240px"})
         }
         function closeNav() {
             $(".sidenav").css({"width": "0px"});
             $(".main").css({"margin-left": "0px"});
+            $(".parallax-container").css({"margin-left": "0px"});
+            $(".container").css({"margin-left": "0px"})
         }
         $(document).ready(function(){
             isOpen = false;
-            $(".glyphicon-th-list").click(function(){
+            $(".icon-menu").click(function(){
                 if(!isOpen) {
                     openNav();
                     isOpen = true;

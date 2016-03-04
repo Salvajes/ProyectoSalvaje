@@ -1,84 +1,175 @@
 <!doctype html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Salvajes</title>
-    <style>
-
-        .first {
-            background-color: #05668D;
-        }
-        .second {
-            background-color: #028090;
-        }
-        .third {
-            background-color: #00A896;
-        }
-        .fourth {
-            background-color: #02C39A;
-        }
-        .fifth {
-            background-color: #F0F3BD;
-        }
-
-
-        body {
-            margin: 0px;
-            padding: 0px;
-            background-color: #F0F3BD;
-        }
-        ul{
-            list-style: none;
-            margin: 0px;
-            padding: 0px;
-        }
-        .header {
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
-            height: 70px;
-        }
-        .header__logo {
-            flex-grow: 1;
-        }
-        .header__nav {
-            width: 25%;
-        }
-        .nav__list {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-around;
-        }
-        .nav__item {
-            color: #F0F3BD;
-        }
-        .nav__item:hover {
-            cursor: pointer;
-            color: rgba(240,243,191, 0.8)
-        }
-    </style>
+    <link rel="stylesheet" href="{{ asset("bundles/app/css/style-icons.css") }}">
+    <link rel="stylesheet" href="{{ asset('bundles/app/css/bootstrap.min.css') }}">
+    <script src="{{ asset('bundles/app/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('bundles/app/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('bundles/app/js/parallax.min.js') }}"></script>
 </head>
+<style>
+    .container{
+        height: 180px;
+    }
+    .parallax-container{
+        height: 600px;
+    }
+    .header_social_list {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        width: 200px;
+    }
+    .header_social_list_li {
+        cursor: pointer;
+
+    }
+    .icon {
+        font-size: 2.5rem;
+
+    }
+    .icon:hover {
+        cursor: pointer;
+        color: rgba(51,51,51, 0.54);
+    }
+    .button1{
+        background-color: white;
+        color: black;
+        border: 2px solid #D8E2DC;
+        transition-duration: 0.4s;
+    }
+    .button1:hover{
+        background-color: #D8E2DC;
+        color: white;
+    }
+    .button2{
+        background-color: white;
+        color: black;
+        border: 2px solid #FFE5D9;
+        transition-duration: 0.4s;
+    }
+    .button2:hover{
+        background-color: #FFE5D9;
+        color: white;
+    }
+    .button3{
+        background-color: white;
+        color: black;
+        border: 2px solid #FFCAD4;
+        transition-duration: 0.4s;
+    }
+    .button3:hover{
+        background-color: #FFCAD4;
+        color: white;
+    }
+    .button4{
+        background-color: white;
+        color: black;
+        border: 2px solid #FFCDB2;
+        transition-duration: 0.4s;
+    }
+    .button4:hover{
+        background-color: #FFCDB2;
+        color: white;
+    }
+    .button5{
+        background-color: white;
+        color: black;
+        border: 2px solid #FFB4A2;
+        transition-duration: 0.4s;
+    }
+    .button5:hover{
+        background-color: #FFB4A2;
+        color: white;
+    }
+    .button6{
+        background-color: white;
+        color: black;
+        border: 2px solid #F4ACB7;
+        transition-duration: 0.4s;
+    }
+    .button6:hover{
+        background-color: #F4ACB7;
+        color: white;
+    }
+    .button7{
+        background-color: white;
+        color: black;
+        border: 2px solid #E5989B;
+        transition-duration: 0.4s;
+    }
+    .button7:hover{
+        background-color: #E5989B;
+        color: white;
+    }
+    .button8{
+        background-color: white;
+        color: black;
+        border: 2px solid #B5838D;
+        transition-duration: 0.4s;
+    }
+    .button8:hover{
+        background-color: #B5838D;
+        color: white;
+    }
+    .container1 {
+        display: flex;
+        justify-content: space-around;
+        align-content: center;
+        margin-bottom: 20px;
+    }
+    ul {
+        margin: 0px;
+        padding: 0px;
+        list-style: none;
+    }
+</style>
 <body>
-    <header class="header first">
-        <div class="header__logo">Salvajes</div>
-        <nav class="header__nav">
-            <ul class="nav__list">
-                <li class="nav__item">Galeria</li>
-                <li class="nav__item">Cómo Comprar?</li>
-                <li class="nav__item">Paquetes</li>
-                <li class="nav__item">Promociones</li>
-            </ul>
-        </nav>
-    </header>
-    <main class="main">
-        <section>
-            <div class="promociones">
-                Marzo
+    <section>
+        <div class="container1">
+            <div class="header_buttons">
+                <img src="{{ asset('bundles/app/images/salvajes.png') }}"/>
+                <button class="button1">Proyectos</button>
+                <button class="button2">Que ofrecemos</button>
+                <button class="button3">Paquetes</button>
+                <button class="button4">Promociones</button>
+                <button class="button5">Como Comprar</button>
+                <button class="button6">Blog</button>
+                <button class="button7">Contacto</button>
+                <button class="button8">Nosotros</button>
             </div>
-        </section>
-    </main>
-    <footer>
-        pie de página
-    </footer>
+            <ul class="header_social_list">
+                <li class="header_social_list_li"><span class="icon icon-facebook2"></span></li>
+                <li class="header_social_list_li"><span class="icon icon-twitter"></span></li>
+                <li class="header_social_list_li"><span class="icon icon-instagram"></span></li>
+            </ul>
+        </div>
+    </section>
+
+    <div class="parallax-container" data-parallax="scroll" data-position="top" data-bleed="10"
+         data-image-src="{{ asset('bundles/app/images/tacos.jpg') }}" data-natural-width="1400"
+         data-natural-height="900">
+    </div>
+
+    <section>
+        <div class="container">
+            <h1>Los tacos dan mas energia que los hamsters, <small>(se venden hamster por separado)</small></h1>
+        </div>
+    </section>
+
+    <div class="parallax-container" data-parallax="scroll" data-position="top" data-bleed="10"
+         data-image-src="{{ asset('bundles/app/images/hamster.jpg') }}" data-natural-width="1400"
+         data-natural-height="900">
+    </div>
 </body>
+<footer>
+    <div class="container">
+        Salvajes SA de CV &copy; 2016
+    </div>
+</footer>
 </html>
