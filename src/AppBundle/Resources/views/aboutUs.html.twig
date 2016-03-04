@@ -2,10 +2,36 @@
 
 {% block styles %}
     <style>
-        .section-info {
-            height: 200px;
-            padding: 20px;
+        .see_more {
+            color: #0566bd;
+            font-size: 1.6rem;
+            cursor: pointer;
         }
+        .info {
+            height: 200px;
+            padding: 50px 50px;
+            display: flex;
+            flex-direction: column;
+        }
+        .info--der {
+            align-items: flex-end;
+            text-align: end;
+        }
+        .info--izq {
+            align-items: flex-start;
+        }
+        .info_paragraph {
+            width: 50%;
+            font-size: 2.4rem;
+        }
+        .footer {
+            height: 200px;
+            background-color: #ed6a5a;
+            text-align: center;
+            color: white;
+            font-size: 30px;
+        }
+
     </style>
 {% endblock %}
 {% block main %}
@@ -15,14 +41,35 @@
 
     </section>
 
-    <section class="section-info">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium dolorem ducimus,
-            eaque nostrum odit sapiente tempora. Aliquam asperiores at cumque eaque et ipsa iste
-            laborum omnis, optio pariatur qui repudiandae!</p>
+    <section class="info info--der">
+        <div class="info_paragraph">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            Adipisci alias amet aperiam consequuntur dolor ducimus eos et, exercitationem
+        </div>
+        <div class="see_more">
+            Ver más...
+        </div>
     </section>
 
     <section class="parallax-container" data-parallax="scroll" data-position="top" data-bleed="10"
          data-image-src="{{ asset('bundles/app/images/intro-imac.jpg') }}" data-natural-width="1400"
          data-natural-height="900">
     </section>
+    <section class="info info--izq">
+        <div class="info_paragraph">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            Adipisci alias amet aperiam consequuntur dolor ducimus eos et, exercitationem
+        </div>
+        <div class="see_more">
+            Ver más...
+        </div>
+    </section>
+
+    <section class="parallax-container" data-parallax="scroll" data-position="top" data-bleed="10"
+             data-image-src="{{ asset('bundles/app/images/mac-book.jpg') }}" data-natural-width="1400"
+             data-natural-height="900">
+    </section>
+    <footer class="footer">
+        FOOTER
+    </footer>
 {% endblock %}
