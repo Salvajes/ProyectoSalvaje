@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>¡ - Quisiera entrar - !</title>
+
+    <link rel="stylesheet" href="{{ asset("/bundles/app/css/bootstrap.min.css") }}">
+
+    <script type="application/javascript" src="{{ asset('bundles/app/js/bootstrap.min.js') }}"></script>
+</head>
+<body>
+<style>
+    .no-float {
+        float: none;
+    }
+    .margin-top-10 {
+        margin-top: 10px;
+    }
+</style>
+
+<div class="fluid-container">
+    <div class="col-md-6 no-float center-block">
+        <div class="no-float center-block col-md-8">
+            <img src="{{ asset("bundles/app/images/salvajes.png") }}" alt="Salvajes" class="img-responsive center-block">
+            <form action="#">
+                <div class="row margin-top-10">
+                    <label for="_username">Nombre de usuario</label>
+                    <input type="text" name="_username" class="form-control">
+                </div>
+                <div class="row margin-top-10">
+                    <label for="_password">Contraseña</label>
+                    <input type="password" name="_password" class="form-control">
+                </div>
+                <div class="row margin-top-10">
+                    <button type="submit" class="btn btn-primary">Entrar</button>
+                </div>
+                <div class="row margin-top-10">
+                    <a href="#">¿Olvidaste tu contraseña o usuario?</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
