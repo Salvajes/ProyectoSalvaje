@@ -21,7 +21,8 @@
     <div class="col-md-6 no-float center-block">
         <div class="no-float center-block col-md-8">
             <img src="{{ asset("bundles/app/images/salvajes.png") }}" alt="Salvajes" class="img-responsive center-block">
-            <form action="{{ path('admin.login') }}" method="POST">
+
+            <form action="{{ path('admin.check.login') }}" method="post">
                 <div class="row margin-top-10">
                     <label for="_username">Nombre de usuario</label>
                     <input type="text" name="_username" class="form-control">
@@ -32,6 +33,12 @@
                 </div>
                 <div class="row margin-top-10">
                     <button type="submit" class="btn btn-primary">Entrar</button>
+                </div>
+                <input type="hidden" name="_target_path" value="/appanel/" />
+                <div class="row margin-top-10">
+                    {% if error %}
+                        <p style="color: #982A29">{{ error.message|replace({ "Bad credentials.": "El usuario y la contraseña no son correctos" }) }}</p>
+                    {% endif %}
                 </div>
                 <div class="row margin-top-10">
                     <a href="#">¿Olvidaste tu contraseña o usuario?</a>
