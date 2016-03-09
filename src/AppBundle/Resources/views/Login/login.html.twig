@@ -21,7 +21,7 @@
     <div class="col-md-6 no-float center-block">
         <div class="no-float center-block col-md-8">
             <img src="{{ asset("bundles/app/images/salvajes.png") }}" alt="Salvajes" class="img-responsive center-block">
-            <form action="#">
+            <form action="{{ path('admin.login') }}" method="POST">
                 <div class="row margin-top-10">
                     <label for="_username">Nombre de usuario</label>
                     <input type="text" name="_username" class="form-control">
