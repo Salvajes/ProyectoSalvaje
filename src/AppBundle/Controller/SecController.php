@@ -21,4 +21,18 @@ class SecController extends Controller
     {
         return $this->render("AppBundle:Login:login.html.twig");
     }
+
+    /**
+     * @Route("/check_login", name="admin.check.login")
+     */
+    public function checkLoginAction()
+    {
+    }
+
+    /**
+     * @Route("/logout", name="admin.logout")
+     */
+    public function logoutAction()
+    {
+    }
 }
