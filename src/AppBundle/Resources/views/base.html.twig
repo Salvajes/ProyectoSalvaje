@@ -14,26 +14,28 @@
 </head>
 <body>
     <header class="header">
+
         <div class="header_wrap">
-            <div class="header_buttons">
+            <div>
                 <a href="{{ path('homepage') }}">
                     <img src="{{ asset('bundles/app/images/salvajes.png') }}" class="logo-img"/>
                 </a>
-                <button onclick="window.location.href='{{ path('projects') }}'" class="button1">Proyectos</button>
-                <button onclick="window.location.href='{{ path('what_we_offer') }}'" class="button2">Que ofrecemos</button>
-                <button onclick="window.location.href='{{ path('packages') }}'" class="button3">Paquetes</button>
-                <button onclick="window.location.href='{{ path('promos') }}'" class="button4">Promociones</button>
-                <button onclick="window.location.href='{{ path('how_to_buy') }}'" class="button5">Como Comprar</button>
-                <button onclick="window.location.href='{{ path('blog') }}'" class="button6">Blog</button>
-                <button onclick="window.location.href='{{ path('contact') }}'" class="button7">Contacto</button>
-                <button onclick="window.location.href='{{ path('about_us') }}'" class="button8">Nosotros</button>
+                <button onclick="window.location.href='{{ path('projects') }}'" class="button">Proyectos</button>
+                <button onclick="window.location.href='{{ path('what_we_offer') }}'" class="button">Que ofrecemos</button>
+                <button onclick="window.location.href='{{ path('packages') }}'" class="button">Paquetes</button>
+                <button onclick="window.location.href='{{ path('promos') }}'" class="button">Promociones</button>
+                <button onclick="window.location.href='{{ path('how_to_buy') }}'" class="button">Como Comprar</button>
+                <button onclick="window.location.href='{{ path('blog') }}'" class="button">Blog</button>
+                <button onclick="window.location.href='{{ path('contact') }}'" class="button">Contacto</button>
+                <button onclick="window.location.href='{{ path('about_us') }}'" class="button">Nosotros</button>
             </div>
             <ul class="header_social_list">
                 <li class="header_social_list_li"><span class="icon icon-facebook2"></span></li>
                 <li class="header_social_list_li"><span class="icon icon-twitter"></span></li>
                 <li class="header_social_list_li"><span class="icon icon-instagram"></span></li>
             </ul>
-        </div>
+        </div   >
+
     </header>
     <main class="main">
         {% block main %}

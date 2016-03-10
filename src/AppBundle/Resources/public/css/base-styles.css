@@ -1,6 +1,6 @@
 html, body {
-    padding: 0px;
-    margin: 0px;
+    padding: 0;
+    margin: 0;
     font-size: 16px;
     color: #2d2d2d;
 }
@@ -20,84 +20,14 @@ a{
 .parallax-container{
     height: 600px;
 }
-.button1{
-    background-color: white;
+.button{
+    background-color: transparent;
     color: black;
-    border: 2px solid #D8E2DC;
+    border: 2px solid transparent;
     transition-duration: 0.4s;
 }
-.button1:hover{
+.button:hover{
     background-color: #D8E2DC;
-    color: white;
-}
-.button2{
-    background-color: white;
-    color: black;
-    border: 2px solid #FFE5D9;
-    transition-duration: 0.4s;
-}
-.button2:hover{
-    background-color: #FFE5D9;
-    color: white;
-}
-.button3{
-    background-color: white;
-    color: black;
-    border: 2px solid #FFCAD4;
-    transition-duration: 0.4s;
-}
-.button3:hover{
-    background-color: #FFCAD4;
-    color: white;
-}
-.button4{
-    background-color: white;
-    color: black;
-    border: 2px solid #FFCDB2;
-    transition-duration: 0.4s;
-}
-.button4:hover{
-    background-color: #FFCDB2;
-    color: white;
-}
-.button5{
-    background-color: white;
-    color: black;
-    border: 2px solid #FFB4A2;
-    transition-duration: 0.4s;
-}
-.button5:hover{
-    background-color: #FFB4A2;
-    color: white;
-}
-.button6{
-    background-color: white;
-    color: black;
-    border: 2px solid #F4ACB7;
-    transition-duration: 0.4s;
-}
-.button6:hover{
-    background-color: #F4ACB7;
-    color: white;
-}
-.button7{
-    background-color: white;
-    color: black;
-    border: 2px solid #E5989B;
-    transition-duration: 0.4s;
-}
-.button7:hover{
-    background-color: #E5989B;
-    color: white;
-}
-.button8{
-    background-color: white;
-    color: black;
-    border: 2px solid #B5838D;
-    transition-duration: 0.4s;
-}
-.button8:hover{
-    background-color: #B5838D;
     color: white;
 }
 .logo-img {
@@ -139,8 +69,8 @@ a{
     color: rgba(51,51,51, 0.54);
 }
 ul {
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
     list-style: none;
 }
 .footer {
@@ -172,4 +102,8 @@ ul {
 
 .icon-instagram:hover {
     color: saddlebrown;
+}
+.parallax-window {
+    min-height: 400px;
+    background: transparent;
 }

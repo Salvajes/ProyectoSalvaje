@@ -1,10 +1,12 @@
 {% extends "AppBundle::base.html.twig" %}
 
 {%  block main %}
-    <div class="parallax-container" data-parallax="scroll" data-position="top" data-bleed="10"
-         data-image-src="{{ asset('bundles/app/images/tacos.jpg') }}" data-natural-width="1400"
-         data-natural-height="900">
 
+    <div class="parallax-window">
+        <div class="parallax-slider">
+            <img src="{{ asset('bundles/app/images/mac-book.jpg') }}">
+            <span style="position:absolute; top: 400px; left: 400px;">Some Text</span>
+        </div>
     </div>
 
     <section>
@@ -20,9 +22,16 @@
          data-image-src="{{ asset('bundles/app/images/hamster.jpg') }}" data-natural-width="1400"
          data-natural-height="900">
     </div>
+
 {% endblock %}
 {% block script %}
     <script>
-
+        jQuery(window).trigger('resize').trigger('scroll');
+        $(document).ready(function(){
+            $('.parallax-window').parallax({
+                naturalWidth: 600,
+                naturalHeight: 400
+            });
+        });
     </script>
 {% endblock %}
