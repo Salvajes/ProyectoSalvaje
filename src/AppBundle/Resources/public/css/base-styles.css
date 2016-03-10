@@ -25,6 +25,7 @@ a{
     color: black;
     border: 2px solid transparent;
     transition-duration: 0.4s;
+    font-family: Arcon;
 }
 .button:hover{
     background-color: #D8E2DC;
@@ -41,18 +42,20 @@ a{
     right: 0;
     background-color: white;
     box-shadow: 0 1px 12px -3px rgba(0,0,0,0.3);
+    z-index: 10;
 }
 .header_wrap {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     flex-wrap: wrap;
     align-content: center;
     margin-bottom: 20px;
+    padding: 0 100px;
 }
 .header_social_list {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     width: 200px;
 }
@@ -74,11 +77,9 @@ ul {
     list-style: none;
 }
 .footer {
-    height: 200px;
-    text-align: center;
     color: white;
-    font-size: 30px;
     background-color: #2d2d2d;
+    padding: 30px 0;
 }
 
 .footer_container{
@@ -86,10 +87,22 @@ ul {
     justify-content: center;
     align-items: center;
 }
+.footer_row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 100px;
+}
+.footer_column {
+    display: flex;
+    flex-direction: column;
+}
+
+.newsletters {
+    font-family: kaushan;
+}
 
 .company{
     text-align: center;
-    font-size: 2rem;
     color: black;
 }
 
@@ -105,5 +118,93 @@ ul {
 }
 .parallax-window {
     min-height: 400px;
-    background: transparent;
+}
+.section-parallax {
+    height: 100vh;
+    background:rgba(255, 128, 0, .5);
+}
+
+
+/*-------------------About ------------------*/
+.see_more {
+    color: #0566bd;
+    font-size: 1.6rem;
+    cursor: pointer;
+}
+.section {
+    padding: 50px 100px;
+}
+.info, .conocenos {
+    display: flex;
+    flex-direction: column;
+}
+.info_title, .conocenos_title {
+    font-size: 2rem;
+    font-family: abril, Helvetica;
+}
+.info_body {
+    font-size: 1.6rem;
+    padding: auto 50px;
+}
+.info--der {
+    align-items: flex-end;
+    text-align: end;
+}
+.info--izq {
+    align-items: flex-start;
+}
+.info--center {
+    align-items: center;
+}
+.info_paragraph {
+    width: 50%;
+    font-size: 2.4rem;
+}
+.info_title--big {
+    font-size: 3rem;
+}
+.info--enfasis {
+    color: rgba(45,45,45, 0.6)
+}
+.conocenos {
+    margin-top: 120px;
+}
+.conocenos_title {
+    margin-bottom: 40px;
+}
+.conocenos_nosotros {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+}
+.conocenos_nosotros_foto {
+    width: 33%;
+    height: 400px;
+}
+.overlay {
+    background:rgba(0,0,0,.75);
+    text-align:center;
+    padding:245px 0 66px 0;
+    opacity:0;
+    -webkit-transition: opacity .25s ease;
+    -moz-transition: opacity .25s ease;
+    height: 100%;
+    color: #fafafa;
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+}
+.conocenos_nosotros_foto:hover .overlay {
+    opacity: 1;
+    cursor: pointer;
+}
+.social, .me {
+    width: 100%;
+    margin: 20px auto;
+}
+.social {
+    display: flex;
+    justify-content: space-around;
 }

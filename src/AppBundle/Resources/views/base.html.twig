@@ -14,17 +14,12 @@
 </head>
 <body>
     <header class="header">
-
         <div class="header_wrap">
             <div>
                 <a href="{{ path('homepage') }}">
                     <img src="{{ asset('bundles/app/images/salvajes.png') }}" class="logo-img"/>
                 </a>
                 <button onclick="window.location.href='{{ path('projects') }}'" class="button">Proyectos</button>
-                <button onclick="window.location.href='{{ path('what_we_offer') }}'" class="button">Que ofrecemos</button>
-                <button onclick="window.location.href='{{ path('packages') }}'" class="button">Paquetes</button>
-                <button onclick="window.location.href='{{ path('promos') }}'" class="button">Promociones</button>
-                <button onclick="window.location.href='{{ path('how_to_buy') }}'" class="button">Como Comprar</button>
                 <button onclick="window.location.href='{{ path('blog') }}'" class="button">Blog</button>
                 <button onclick="window.location.href='{{ path('contact') }}'" class="button">Contacto</button>
                 <button onclick="window.location.href='{{ path('about_us') }}'" class="button">Nosotros</button>
@@ -34,7 +29,7 @@
                 <li class="header_social_list_li"><span class="icon icon-twitter"></span></li>
                 <li class="header_social_list_li"><span class="icon icon-instagram"></span></li>
             </ul>
-        </div   >
+        </div>
 
     </header>
     <main class="main">
@@ -42,8 +37,39 @@
         {% endblock %}
     </main>
     <footer class="footer">
-        <div class="container footer_container">
+        <div class="footer_row">
+            <div class="footer_column">
+                <ul>
+                    <li><a href="{{ path('homepage') }}">Home</a></li>
+                    <li><a href="{{ path('projects') }}">Proyectos</a></li>
+                    <li><a href="{{ path('blog') }}">Blog</a></li>
+                    <li><a href="{{ path('contact') }}">Contácto</a></li>
+                    <li><a href="{{ path('about_us') }}">Nosotros</a></li>
+                </ul>
+            </div>
+            <div class="footer_column">
+                <ul>
+                    <li><a href="{{ path('what_we_offer') }}">Qué ofrecemos</a></li>
+                    <li><a href="{{ path('packages') }}">Paquetes</a></li>
+                    <li><a href="{{ path('promos') }}">Promociones</a></li>
+                    <li><a href="{{ path('how_to_buy') }}">Cómo comprar</a></li>
+                    <li><a href="#">Preguntas frecuentes</a></li>
+                </ul>
+            </div>
+            <div class="footer_column">
+                <span class="newsletters-label">Suscribete</span>
+                <div class="newslatter">
+                    <input type="text">
+                </div>
+            </div>
+        </div>
+        <div class="footer_row">
             <span class="company">Salvajes SA de CV &copy; 2016</span>
+            <ul class="header_social_list">
+                <li class="header_social_list_li"><span class="icon icon-facebook2"></span></li>
+                <li class="header_social_list_li"><span class="icon icon-twitter"></span></li>
+                <li class="header_social_list_li"><span class="icon icon-instagram"></span></li>
+            </ul>
         </div>
     </footer>
 

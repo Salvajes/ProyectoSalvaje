@@ -18,3 +18,17 @@
     font-weight: normal;
     font-style: normal;
 }
+
+@font-face {
+    font-family: 'arcon';
+    src:    url('../fonts/Arcon-Regular.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'work';
+    src:    url('../fonts/WorkSans-Bold.otf');
+    font-weight: normal;
+    font-style: normal;
+}
