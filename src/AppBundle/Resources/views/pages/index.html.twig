@@ -13,26 +13,125 @@
 
     <section class="section">
         <div class="info">
-            <div class="info_title info_title--big">Three Savages</div>
             <div class="info_body">
-                <p><strong class="info--enfasis">Transformamos tu idea en realidad</strong></p>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus assumenda explicabo mollitia omnis saepe. At atque
-                    corporis cumque dicta earum hic ipsa omnis repudiandae saepe unde? Adipisci consequatur quia voluptatum!
-                </p>
+                <div>
+                    <label for="address" style="font-family: Work">Ingresa tu direcci&oacute;n!</label>
+                    <input id="address" type="textbox" value="Metro Pantitlan">
+                    <input type="button" value="Buscar" onclick="address()">
+                </div>
+                <div>
+                    <label for="latlng" style="font-family: Work">Ingresa tu latitud y longitud!</label>
+                    <input id="latlng" type="textbox" value="19.4326068,-99.1353989">
+                    <input id="latlngButton" type="button" value="Buscar">
+                </div>
+                <div>
+                    <label for="codeAddress" style="font-family: Work">Ingresa tu codigo postal!</label>
+                    <input id="codeAddress" type="textbox" value="11850">
+                    <input type="button" value="Buscar" onclick="codeAddress()">
+                </div>
             </div>
         </div>
     </section>
 
+    <section>
+        <div id="mapCanvas"></div>
+    </section>
+
 {% endblock %}
 {% block script %}
+
+    <script type="text/javascript" src="//maps.googleapis.com/maps/api/js?key=AIzaSyCGEkHuFpgRxgyXCjrLjPKpcd6j_-cqxto"></script>
+
     <script>
+        var map;
+        var geocoder= new google.maps.Geocoder();
+        var infowindow = new google.maps.InfoWindow;
+
         jQuery(window).trigger('resize').trigger('scroll');
+
+        function address() {
+            var address = document.getElementById("address").value;
+            geocoder.geocode( { 'address': address}, function(results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    map.setCenter(results[0].geometry.location);
+                    map.setZoom(11);
+                    var marker = new google.maps.Marker({
+                        map: map,
+                        position: results[0].geometry.location
+                    });
+                    infowindow.setContent(results[0].formatted_address);
+                    infowindow.open(map, marker);
+                } else {
+                    alert("Geocode was not successful for the following reason: " + status);
+                }
+            });
+        }
+
+        function geocodeLatLng(geocoder, map, infowindow) {
+            var input = document.getElementById('latlng').value;
+            var latlngStr = input.split(',', 2);
+            var latlng = {lat: parseFloat(latlngStr[0]), lng: parseFloat(latlngStr[1])};
+            geocoder.geocode({'location': latlng}, function(results, status) {
+                if (status === google.maps.GeocoderStatus.OK) {
+                    if (results[1]) {
+                        map.setZoom(11);
+                        var marker = new google.maps.Marker({
+                            position: latlng,
+                            map: map
+                        });
+                        infowindow.setContent(results[1].formatted_address);
+                        infowindow.open(map, marker);
+                    } else {
+                        window.alert('No results found');
+                    }
+                } else {
+                    window.alert('Geocoder failed due to: ' + status);
+                }
+            });
+        }
+
+        function codeAddress() {
+            var input = document.getElementById('codeAddress').value;
+            geocoder.geocode({
+                componentRestrictions: {
+                    country: 'MX',
+                    postalCode: input
+                }
+            }, function(results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    map.setCenter(results[0].geometry.location);
+                    map.setZoom(11);
+                    var marker = new google.maps.Marker({
+                        map: map,
+                        position: results[0].geometry.location
+                    });
+                    infowindow.setContent(results[0].formatted_address);
+                    infowindow.open(map, marker);
+
+                } else {
+                    window.alert('Geocode was not successful for the following reason: ' + status);
+                }
+            });
+        }
+
         $(document).ready(function(){
+
             $('.parallax-window').parallax({
                 naturalWidth: 600,
                 naturalHeight: 400
             });
+
+            map = new google.maps.Map(document.getElementById('mapCanvas'), {
+                center: {lat: 19.4326068, lng: -99.1353989},
+                scrollwheel: false,
+                zoom: 5
+            });
+
+            document.getElementById('latlngButton').addEventListener('click', function() {
+                geocodeLatLng(geocoder, map, infowindow);
+            });
         });
+
+
     </script>
 {% endblock %}

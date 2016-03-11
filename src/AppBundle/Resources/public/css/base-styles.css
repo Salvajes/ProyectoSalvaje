@@ -160,6 +160,11 @@ ul {
     100% {left:100%}
 }
 
+#mapCanvas {
+    width: 100%;
+    height: 600px;
+}
+
 /*-------------------About ------------------*/
 .see_more {
     color: #0566bd;
