@@ -131,7 +131,7 @@ ul {
     right: 0;
     margin-right: auto;
     margin-left: auto;
-    font-size: 4.5rem;
+    font-size: 2rem;
     color: white;
     font-family: Work;
     font-weight: bold;
@@ -144,19 +144,19 @@ ul {
     -webkit-animation-duration: 4s; /* Chrome, Safari, Opera */
     -webkit-animation-iteration-count: 5; /* Chrome, Safari, Opera */
     animation-name: example;
-    animation-duration: 4s;
+    animation-duration: 7s;
     animation-iteration-count: 5;
 }
 
 /* Chrome, Safari, Opera */
 @-webkit-keyframes example {
-    0% {left:-100%}
+    0% {left:-50%}
     100% {left:100%}
 }
 
 /* Standard syntax */
 @keyframes example {
-    0% {left:-100%}
+    0% {left:-50%}
     100% {left:100%}
 }
 
