@@ -19,6 +19,7 @@ a{
 }
 .parallax-container{
     height: 600px;
+    overflow: hidden;
 }
 .button{
     background-color: transparent;
@@ -119,11 +120,6 @@ ul {
 .parallax-window {
     min-height: 400px;
 }
-.section-parallax {
-    height: 100vh;
-    overflow: hidden;
-}
-
 .image-font {
     position: absolute;
     top: 300px;
@@ -262,6 +258,7 @@ ul {
 }
 #menuMapa {
     position: absolute;
+    cursor: pointer;
     z-index: 1;
     display: flex;
     justify-content: center;
