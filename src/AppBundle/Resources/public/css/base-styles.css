@@ -28,6 +28,24 @@ a{
     transition-duration: 0.4s;
     font-family: Arcon;
 }
+.button-transparent{
+    background-color: white;
+    color: black;
+    border: 2px solid transparent;
+    transition-duration: 0.4s;
+    font-family: Arcon;
+}
+.input-white{
+    background-color: white;
+    color: black;
+    border: 2px solid transparent;
+    transition-duration: 0.4s;
+    font-family: Arcon;
+}
+.button-transparent:hover{
+    background-color: deepskyblue;
+    color: white;
+}
 .button:hover{
     background-color: #D8E2DC;
     color: white;
@@ -248,6 +266,7 @@ ul {
 #search {
     display: none;
     position: absolute;
+    overflow: hidden;
     padding: 10px;
     z-index: 1;
     top: 70px;
@@ -271,4 +290,18 @@ ul {
 }
 .section-mapa {
     position: relative;
+}
+.search-left {
+    float: left;
+    width: 50%;
+}
+.search-right {
+    float: right;
+    width: 50%;
+}
+.buttons-space{
+    margin-bottom: 5px;
+}
+.search-space{
+    margin-bottom: 15px;
 }

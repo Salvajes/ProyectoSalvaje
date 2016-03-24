@@ -22,20 +22,24 @@
     <section class="section-mapa">
         <div id="mapCanvas"></div>
         <div id="search">
-            <div>
-                <label for="address" style="font-family: Work">Ingresa tu direcci&oacute;n!</label>
-                <input id="address" value="Metro Pantitlan">
-                <input type="button" value="Buscar" onclick="address()">
+            <div class="search-left">
+                <label for="address" class="search-space">Ingresa tu direcci&oacute;n!</label>
+                <label for="latlng" class="search-space">Ingresa tu latitud y longitud!</label>
+                <label for="codeAddress" class="search-space">Ingresa tu codigo postal!</label>
             </div>
-            <div>
-                <label for="latlng" style="font-family: Work">Ingresa tu latitud y longitud!</label>
-                <input id="latlng" value="19.4326068,-99.1353989">
-                <input type="button" value="Buscar" onclick="geocodeLatLng()">
-            </div>
-            <div>
-                <label for="codeAddress" style="font-family: Work">Ingresa tu codigo postal!</label>
-                <input id="codeAddress" value="11850">
-                <input type="button" value="Buscar" onclick="codeAddress()">
+            <div class="search-right">
+                <div class="buttons-space">
+                    <input class="input-white" id="address" value="Metro Pantitlan">
+                    <input class="button-transparent" type="button" value="Buscar" onclick="address()">
+                </div>
+                <div class="buttons-space">
+                    <input class="input-white" id="latlng" value="19.4326068,-99.1353989">
+                    <input class="button-transparent" type="button" value="Buscar" onclick="geocodeLatLng()">
+                </div>
+                <div class="buttons-space">
+                    <input class="input-white" id="codeAddress" value="11850">
+                    <input class="button-transparent" type="button" value="Buscar" onclick="codeAddress()">
+                </div>
             </div>
         </div>
         <div id="menuMapa">
