@@ -1,0 +1,50 @@
+{% extends "AppBundle:Appanel:index.html.twig" %}
+
+{% block title %}
+    Crear usuario
+{% endblock %}
+
+{% block content %}
+<style>
+    .no-float {
+        float: none;
+    }
+</style>
+
+    <div class="full-container">
+        <div class="col-md-7 col-lg-7 col-sm-7 no-float center-block">
+            <div class="row">
+                <div class="col-md-6 col-sm-6">
+                    <label for="name">Nombre de usuario</label>
+                    <input name="name" type="text" class="form-control">
+                </div>
+                <div class="col-md-6 col-sm-6">
+                    <label for="realname">Nombre completo</label>
+                    <input name="realname" type="text" class="form-control">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-sm-6">
+                    <label for="email">Correo electronico</label>
+                    <input name="email" type="email" class="form-control">
+                </div>
+                <div class="col-md-6 col-sm-6">
+                    <label for="password">Contraseña</label>
+                    <input name="password" type="password" class="form-control">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-sm-6">
+                    <label for="avatar">Avatar</label>
+                    <input name="avatar" type="file" class="form-control">
+                </div>
+            </div>
+            <div class="row" style="margin-top: 10px">
+                <div class="col-md-6 col-sm-6">
+                    <button type="submit" class="btn btn-primary">Crear</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

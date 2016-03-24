@@ -1,2 +1,88 @@
-Hola index
-<a href="{{ path("admin.logout") }}">Salir</a>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard - {% block title %}{% endblock %}</title>
+
+    <link rel="stylesheet" href="{{ asset("bundles/app/css/bootstrap.min.css") }}">
+
+    <script type="text/javascript" src="{{ asset('bundles/app/js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/app/js/jquery-1.12.0.min.js') }}"></script>
+
+</head>
+<body>
+<style>
+    * {
+        margin: 0 0 0 0;
+        padding: 0 0 0 0;
+    }
+    .full-container {
+        width: 100%;
+    }
+    .nav {
+        background-color: #00A896;
+        width: 100%;
+        display: table;
+    }
+    .logo {
+        max-width: 35%;
+        padding: 5px 5px 5px 5px;
+    }
+    .btn-a {
+        margin: 5px 5px 5px 5px;
+        background-color: transparent;
+        border: #069 solid 2px;
+        padding: 4px 4px 4px 4px;
+        border-radius: .3em;
+        transition: all .3s;
+    }
+    .btn-a:hover {
+        background-color: black;
+        border: black solid 2px;
+        color: white;
+    }
+    .middle {
+        display: table-cell;
+        vertical-align: middle;
+    }
+    @media (max-width: 920px) {
+        .logo {
+            max-width: 40%;
+            padding: 2px 2px 2px 2px;
+        }
+    }
+
+    @media (max-width: 420px) {
+        .logo {
+            max-width: 50%;
+            padding: 2px 2px 2px 2px;
+        }
+    }
+
+</style>
+    <nav>
+        <div class="full-container">
+            <div class="nav">
+                <div class="logo">
+                    <img class="img-responsive logo" src="{{ asset("/bundles/app/images/salvajes.png") }}"
+                         alt="ThreeSavages">
+                </div>
+                <div class="logout middle">
+                <a href="{{ path('admin.logout') }}" class="pull-right" style="margin-right: 10px">
+                    <img class="" src="{{ asset("/bundles/app/images/logout.png") }}" alt="Log out">
+                </a>
+                <a href="#" class="pull-right" style="margin-right: 10px">
+                    <img class="" src="{{ asset("/bundles/app/images/config.png") }}" alt="Log out">
+                </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+{% block content %}
+{% endblock %}
+
+{% block script %}
+{% endblock %}
+
+</body>
+</html>
