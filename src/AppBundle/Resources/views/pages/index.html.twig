@@ -1,27 +1,149 @@
 {% extends "AppBundle::base.html.twig" %}
 
 {%  block main %}
-    <div class="parallax-container" data-parallax="scroll" data-position="top" data-bleed="10"
-         data-image-src="{{ asset('bundles/app/images/tacos.jpg') }}" data-natural-width="1400"
-         data-natural-height="900">
 
-    </div>
-
-    <section>
-        <div class="container">
-            <h1>Los tacos dan mas energia que los hamsters,
-                <small>(se venden hamster por separado)</small>
-            </h1>
+    <section class="parallax-container" data-parallax="scroll"
+             data-image-src="{{ asset('bundles/app/images/comida-mexicana.jpg') }}">
+        <div class="move">
+        <span class="image-font">
+                Encuentra la mejor comida
+        </span>
         </div>
     </section>
 
-    <div class="parallax-container" data-parallax="scroll" data-position="top" data-bleed="10"
-         data-image-src="{{ asset('bundles/app/images/hamster.jpg') }}" data-natural-width="1400"
-         data-natural-height="900">
-    </div>
+    <section class="section">
+        <div class="info">
+            <div class="info_body">
+
+            </div>
+        </div>
+    </section>
+
+    <section class="section-mapa">
+        <div id="mapCanvas"></div>
+        <div id="search">
+            <div class="search-left">
+                <label for="address" class="search-space">Ingresa tu direcci&oacute;n!</label>
+                <label for="latlng" class="search-space">Ingresa tu latitud y longitud!</label>
+                <label for="codeAddress" class="search-space">Ingresa tu codigo postal!</label>
+            </div>
+            <div class="search-right">
+                <div class="buttons-space">
+                    <input class="input-white" id="address" value="Metro Pantitlan">
+                    <input class="button-transparent" type="button" value="Buscar" onclick="address()">
+                </div>
+                <div class="buttons-space">
+                    <input class="input-white" id="latlng" value="19.4326068,-99.1353989">
+                    <input class="button-transparent" type="button" value="Buscar" onclick="geocodeLatLng()">
+                </div>
+                <div class="buttons-space">
+                    <input class="input-white" id="codeAddress" value="11850">
+                    <input class="button-transparent" type="button" value="Buscar" onclick="codeAddress()">
+                </div>
+            </div>
+        </div>
+        <div id="menuMapa">
+            <img src="{{ asset('bundles/app/images/burger.png') }}">
+        </div>
+    </section>
+
 {% endblock %}
-{% block script %}
+{% block script %}     
+
+    <script type="text/javascript" src="//maps.googleapis.com/maps/api/js?key=AIzaSyCGEkHuFpgRxgyXCjrLjPKpcd6j_-cqxto"></script>
+
     <script>
+        var map;
+        var geocoder= new google.maps.Geocoder();
+        var infowindow = new google.maps.InfoWindow;
+
+        jQuery(window).trigger('resize').trigger('scroll');
+
+        function address() {
+            var address = document.getElementById("address").value;
+            geocoder.geocode( { 'address': address}, function(results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    map.setCenter(results[0].geometry.location);
+                    map.setZoom(11);
+                    var marker = new google.maps.Marker({
+                        map: map,
+                        position: results[0].geometry.location
+                    });
+                    infowindow.setContent(results[0].formatted_address);
+                    infowindow.open(map, marker);
+                } else {
+                    alert("Geocode was not successful for the following reason: " + status);
+                }
+            });
+        }
+
+        function geocodeLatLng() {
+            var input = document.getElementById('latlng').value;
+            var latlngStr = input.split(',', 2);
+            var latlng = {lat: parseFloat(latlngStr[0]), lng: parseFloat(latlngStr[1])};
+            geocoder.geocode({'location': latlng}, function(results, status) {
+                if (status === google.maps.GeocoderStatus.OK) {
+                    if (results[1]) {
+                        map.setZoom(11);
+                        var marker = new google.maps.Marker({
+                            position: latlng,
+                            map: map
+                        });
+                        infowindow.setContent(results[1].formatted_address);
+                        infowindow.open(map, marker);
+                    } else {
+                        window.alert('No results found');
+                    }
+                } else {
+                    window.alert('Geocoder failed due to: ' + status);
+                }
+            });
+        }
+
+        function codeAddress() {
+            var input = document.getElementById('codeAddress').value;
+            geocoder.geocode({
+                componentRestrictions: {
+                    country: 'MX',
+                    postalCode: input
+                }
+            }, function(results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    map.setCenter(results[0].geometry.location);
+                    map.setZoom(11);
+                    var marker = new google.maps.Marker({
+                        map: map,
+                        position: results[0].geometry.location
+                    });
+                    infowindow.setContent(results[0].formatted_address);
+                    infowindow.open(map, marker);
+
+                } else {
+                    window.alert('Geocode was not successful for the following reason: ' + status);
+                }
+            });
+        }
+
+        $(document).ready(function(){
+
+            $('.parallax-window').parallax({
+                naturalWidth: 600,
+                naturalHeight: 400
+            });
+
+            map = new google.maps.Map(document.getElementById('mapCanvas'), {
+                center: {lat: 19.4326068, lng: -99.1353989},
+                scrollwheel: false,
+                zoom: 5,
+                mapTypeControl: false
+            });
+
+            $("#menuMapa").click(function(){
+                $("#search").toggle();
+            });
+
+        });
+
 
     </script>
 {% endblock %}

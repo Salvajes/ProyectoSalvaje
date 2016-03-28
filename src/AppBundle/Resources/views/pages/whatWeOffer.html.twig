@@ -1,1 +1,28 @@
 {% extends "AppBundle::base.html.twig" %}
+
+{%  block main %}
+
+    <section class="parallax-container section-parallax" data-parallax="scroll"
+             data-image-src="{{ asset('bundles/app/images/cloud-heart.jpg') }}">
+        <div class="move">
+        <span class="image-font">
+                <strong>Nubecita</strong>
+        </span>
+        </div>
+    </section>
+
+{% endblock %}
+
+{% block script %}
+
+    <script>
+        jQuery(window).trigger('resize').trigger('scroll');
+        $(document).ready(function(){
+            $('.parallax-window').parallax({
+                naturalWidth: 600,
+                naturalHeight: 400
+            });
+        });
+    </script>
+
+{% endblock %}
