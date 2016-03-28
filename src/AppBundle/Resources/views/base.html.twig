@@ -15,24 +15,22 @@
 <body>
     <header class="header">
         <div class="header_wrap">
-            <div class="header_buttons">
+            <div>
                 <a href="{{ path('homepage') }}">
                     <img src="{{ asset('bundles/app/images/salvajes.png') }}" class="logo-img"/>
                 </a>
-                <button onclick="window.location.href='{{ path('projects') }}'" class="button1">Proyectos</button>
-                <button onclick="window.location.href='{{ path('what_we_offer') }}'" class="button2">Que ofrecemos</button>
-                <button onclick="window.location.href='{{ path('packages') }}'" class="button3">Paquetes</button>
-                <button onclick="window.location.href='{{ path('promos') }}'" class="button4">Promociones</button>
-                <button onclick="window.location.href='{{ path('how_to_buy') }}'" class="button5">Como Comprar</button>
-                <button onclick="window.location.href='{{ path('blog') }}'" class="button6">Blog</button>
-                <button onclick="window.location.href='{{ path('contact') }}'" class="button7">Contacto</button>
-                <button onclick="window.location.href='{{ path('about_us') }}'" class="button8">Nosotros</button>
+                <button onclick="window.location.href='{{ path('projects') }}'" class="button">Proyectos</button>
+                <button onclick="window.location.href='{{ path('blog') }}'" class="button">Blog</button>
+                <button onclick="window.location.href='{{ path('contact') }}'" class="button">Contacto</button>
+                <button onclick="window.location.href='{{ path('about_us') }}'" class="button">Nosotros</button>
             </div>
             <ul class="header_social_list">
                 <li class="header_social_list_li"><span class="icon icon-facebook2"></span></li>
                 <li class="header_social_list_li"><span class="icon icon-twitter"></span></li>
                 <li class="header_social_list_li"><span class="icon icon-instagram"></span></li>
             </ul>
+            <div id="fb-root"></div>
+            <div class="fb-login-button" data-max-rows="1" data-size="medium" data-show-faces="false" data-auto-logout-link="false"></div>
         </div>
     </header>
     <main class="main">
@@ -40,16 +38,54 @@
         {% endblock %}
     </main>
     <footer class="footer">
-        <div class="container footer_container">
+        <div class="footer_row">
+            <div class="footer_column">
+                <ul>
+                    <li><a href="{{ path('homepage') }}">Home</a></li>
+                    <li><a href="{{ path('projects') }}">Proyectos</a></li>
+                    <li><a href="{{ path('blog') }}">Blog</a></li>
+                    <li><a href="{{ path('contact') }}">Contácto</a></li>
+                    <li><a href="{{ path('about_us') }}">Nosotros</a></li>
+                </ul>
+            </div>
+            <div class="footer_column">
+                <ul>
+                    <li><a href="{{ path('what_we_offer') }}">Qué ofrecemos</a></li>
+                    <li><a href="{{ path('packages') }}">Paquetes</a></li>
+                    <li><a href="{{ path('promos') }}">Promociones</a></li>
+                    <li><a href="{{ path('how_to_buy') }}">Cómo comprar</a></li>
+                    <li><a href="#">Preguntas frecuentes</a></li>
+                </ul>
+            </div>
+            <div class="footer_column">
+                <span class="newsletters-label">Suscribete</span>
+                <div class="newslatter">
+                    <input type="text">
+                </div>
+            </div>
+        </div>
+        <div class="footer_row">
             <span class="company">Salvajes SA de CV &copy; 2016</span>
+            <ul class="header_social_list">
+                <li class="header_social_list_li"><span class="icon icon-facebook2"></span></li>
+                <li class="header_social_list_li"><span class="icon icon-twitter"></span></li>
+                <li class="header_social_list_li"><span class="icon icon-instagram"></span></li>
+            </ul>
         </div>
     </footer>
 
     <script src="{{ asset('bundles/app/js/jquery.min.js') }}"></script>
     <script src="{{ asset('bundles/app/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('bundles/app/js/parallax.min.js') }}"></script>
-    <script>
 
+    <script>
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v2.5&appId=557455224416615";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
     </script>
     {% block script %}
     {% endblock %}
