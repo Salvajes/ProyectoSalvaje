@@ -1,0 +1,34 @@
+@font-face {
+    font-family: 'kaushan';
+    src:    url('../fonts/kaushan.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'harry';
+    src:    url('../fonts/harry.TTF');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'abril';
+    src:    url('../fonts/AbrilFatface-Regular.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'arcon';
+    src:    url('../fonts/Arcon-Regular.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'work';
+    src:    url('../fonts/WorkSans-Bold.otf');
+    font-weight: normal;
+    font-style: normal;
+}
