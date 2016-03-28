@@ -8,30 +8,23 @@ security:
 
     # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
     providers:
-        in_memory:
-            memory: ~
-        Users:
+        users:
             entity:
                 class:    AppBundle:Users
                 property: username
 
     firewalls:
-        # disables authentication for assets and the profiler, adapt it according to your needs
-        dev:
-            pattern: ^/(_(profiler|wdt)|css|images|js)/
-            security: false
-
         appanel_login:
-            pattern:    /appanel/login
+            pattern:    ^/appanel/login
             security:   false
 
         appanel_secured_area:
-            pattern: /appanel$
+            pattern: /appanel/*
             form_login:
-                check_path: admin.check.login
-                login_path: admin.login
-                default_target_path: admin.index
+                check_path: /appanel/check_login
+                login_path: /appanel/login
+                default_target_path: /appanel/
             logout:
-                path: admin.logout
-                target: admin.login
+                path: /appanel/logout
+                target: /appanel/login
             provider: users

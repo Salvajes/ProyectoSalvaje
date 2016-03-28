@@ -7,11 +7,20 @@
             font-size: 1.6rem;
             cursor: pointer;
         }
-        .info {
-            height: 200px;
-            padding: 50px 50px;
+        .section {
+            padding: 50px 100px;
+        }
+        .info, .conocenos {
             display: flex;
             flex-direction: column;
+        }
+        .info_title {
+            font-size: 2rem;
+            font-family: abril, Helvetica;
+        }
+        .info_body {
+            font-size: 1.6rem;
+            padding: auto 50px;
         }
         .info--der {
             align-items: flex-end;
@@ -20,46 +29,123 @@
         .info--izq {
             align-items: flex-start;
         }
+        .info--center {
+            align-items: center;
+        }
         .info_paragraph {
             width: 50%;
             font-size: 2.4rem;
         }
-
+        .info_title--big {
+            font-size: 3rem;
+        }
+        .info--enfasis {
+            color: rgba(45,45,45, 0.6)
+        }
+        .conocenos {
+            margin-top: 40px;
+        }
+        .conocenos_nosotros {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            text-align: center;
+        }
+        .conocenos_nosotros_foto {
+            width: 33%;
+            height: 400px;
+        }
+        .conocenos_nosotros_foto:nth-of-type(1){
+            background-image: url("{{ asset('bundles/app/images/superman.jpg') }}");
+            background-size: cover;
+        }
+        .conocenos_nosotros_foto:nth-of-type(2){
+            background-image: url("{{ asset('bundles/app/images/batman-gotham.jpg') }}");
+            background-size: cover;
+        }
+        .conocenos_nosotros_foto:nth-of-type(3){
+            background-image: url("{{ asset('bundles/app/images/green-lantern.jpg') }}");
+            background-size: cover;
+        }
+        .overlay {
+            background:rgba(0,0,0,.75);
+            text-align:center;
+            padding:245px 0 66px 0;
+            opacity:0;
+            -webkit-transition: opacity .25s ease;
+            -moz-transition: opacity .25s ease;
+            height: 100%;
+            color: #fafafa;
+            display: flex;
+            align-items: flex-end;
+            flex-direction: column;
+        }
+        .conocenos_nosotros_foto:hover .overlay {
+            opacity: 1;
+            cursor: pointer;
+        }
+        .social, .me {
+            width: 100%;
+            margin: 20px auto;
+        }
+        .social {
+            display: flex;
+            justify-content: space-around;
+        }
     </style>
 {% endblock %}
 {% block main %}
-    <section class="parallax-container" data-parallax="scroll" data-position="top" data-bleed="10"
-         data-image-src="{{ asset('bundles/app/images/mac-book.jpg') }}" data-natural-width="1400"
-         data-natural-height="900">
-
+    <section class="parallax-container" data-parallax="scroll"
+             data-image-src="{{ asset('bundles/app/images/mac-book.jpg') }}">
     </section>
 
-    <section class="info info--der">
-        <div class="info_paragraph">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            Adipisci alias amet aperiam consequuntur dolor ducimus eos et, exercitationem
+    <section class="section">
+        <div class="info">
+            <div class="info_title info_title--big">Conócenos</div>
+            <div class="info_body">
+                <p><strong class="info--enfasis">Somos un grupo de amigos apasionados con la
+                        tecnología y cosas geek.</strong></p>
+                Nos gusta estar actualizados en cuanto a tecnología web y móvil se refiere.
+                Creemos que disfrutar de lo que hacemos es la base para desarrollar proyectos innovadores e inspiradores,
+                que puedan llegar a todo el mundo.
+                Cada proyecto nuevo que abordamos es un nuevo reto en el cual daremos lo mejor de nosotros.
+            </div>
         </div>
-        <div class="see_more">
-            Ver más...
+        <div class="conocenos info--center">
+            <div class="info_title info_title--big">Nuestra <strong>Liga de la Justicia</strong></div>
+            <div class="conocenos_nosotros">
+                <div class="conocenos_nosotros_foto">
+                    <div class="overlay">
+                        <div class="info_title me"><strong>Daniel</strong></div>
+                        <div class="social">
+                            <span class="icon icon-twitter"></span>
+                            <span class="icon icon-facebook2"></span>
+                            <span class="icon icon-instagram"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="conocenos_nosotros_foto">
+                    <div class="overlay">
+                        <div class="info_title me"><strong>Jaime</strong></div>
+                        <div class="social">
+                            <span class="icon icon-twitter"></span>
+                            <span class="icon icon-facebook2"></span>
+                            <span class="icon icon-instagram"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="conocenos_nosotros_foto">
+                    <div class="overlay">
+                        <div class="info_title me"><strong>Brayan</strong></div>
+                        <div class="social">
+                            <span class="icon icon-twitter"></span>
+                            <span class="icon icon-facebook2"></span>
+                            <span class="icon icon-instagram"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </section>
-
-    <section class="parallax-container" data-parallax="scroll" data-position="top" data-bleed="10"
-         data-image-src="{{ asset('bundles/app/images/intro-imac.jpg') }}" data-natural-width="1400"
-         data-natural-height="900">
-    </section>
-    <section class="info info--izq">
-        <div class="info_paragraph">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            Adipisci alias amet aperiam consequuntur dolor ducimus eos et, exercitationem
-        </div>
-        <div class="see_more">
-            Ver más...
-        </div>
-    </section>
-
-    <section class="parallax-container" data-parallax="scroll" data-position="top" data-bleed="10"
-             data-image-src="{{ asset('bundles/app/images/mac-book.jpg') }}" data-natural-width="1400"
-             data-natural-height="900">
     </section>
 {% endblock %}
