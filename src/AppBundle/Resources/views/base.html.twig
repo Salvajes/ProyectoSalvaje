@@ -2,8 +2,6 @@
 <html lang="es">
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Salvajes</title>
     <link rel="stylesheet" href="{{ asset("bundles/app/css/style-icons.css") }}">
     <link rel="stylesheet" href="{{ asset('bundles/app/css/bootstrap.min.css') }}">
@@ -15,24 +13,39 @@
 <body>
     <header class="header">
         <div class="header_wrap">
-            <div>
+            <div class="center">
                 <a href="{{ path('homepage') }}">
                     <img src="{{ asset('bundles/app/images/salvajes.png') }}" class="logo-img"/>
                 </a>
-                <button onclick="window.location.href='{{ path('projects') }}'" class="button">Proyectos</button>
                 <button onclick="window.location.href='{{ path('blog') }}'" class="button">Blog</button>
                 <button onclick="window.location.href='{{ path('contact') }}'" class="button">Contacto</button>
                 <button onclick="window.location.href='{{ path('about_us') }}'" class="button">Nosotros</button>
             </div>
-            <ul class="header_social_list">
-                <li class="header_social_list_li"><span class="icon icon-facebook2"></span></li>
-                <li class="header_social_list_li"><span class="icon icon-twitter"></span></li>
-                <li class="header_social_list_li"><span class="icon icon-instagram"></span></li>
-            </ul>
-            <div id="fb-root"></div>
-            <div class="fb-login-button" data-max-rows="1" data-size="medium" data-show-faces="false" data-auto-logout-link="false"></div>
+            <div class="center">
+                <button type="button" class="button" data-toggle="modal" data-target="#signModal">
+                    Registro
+                </button>
+            </div>
         </div>
     </header>
+
+    <div class="modal fade" id="signModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                    <h4 class="modal-title">Registro</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="fb-login-button" data-max-rows="1" data-size="medium" data-show-faces="false" data-auto-logout-link="false"></div>
+                </div>
+                <div class="modal-footer">
+
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
     <main class="main">
         {% block main %}
         {% endblock %}
@@ -42,7 +55,6 @@
             <div class="footer_column">
                 <ul>
                     <li><a href="{{ path('homepage') }}">Home</a></li>
-                    <li><a href="{{ path('projects') }}">Proyectos</a></li>
                     <li><a href="{{ path('blog') }}">Blog</a></li>
                     <li><a href="{{ path('contact') }}">Contácto</a></li>
                     <li><a href="{{ path('about_us') }}">Nosotros</a></li>
@@ -50,10 +62,6 @@
             </div>
             <div class="footer_column">
                 <ul>
-                    <li><a href="{{ path('what_we_offer') }}">Qué ofrecemos</a></li>
-                    <li><a href="{{ path('packages') }}">Paquetes</a></li>
-                    <li><a href="{{ path('promos') }}">Promociones</a></li>
-                    <li><a href="{{ path('how_to_buy') }}">Cómo comprar</a></li>
                     <li><a href="#">Preguntas frecuentes</a></li>
                 </ul>
             </div>
@@ -76,7 +84,6 @@
 
     <script src="{{ asset('bundles/app/js/jquery.min.js') }}"></script>
     <script src="{{ asset('bundles/app/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('bundles/app/js/parallax.min.js') }}"></script>
 
     <script>
         (function(d, s, id) {
@@ -87,6 +94,7 @@
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
     </script>
+
     {% block script %}
     {% endblock %}
 </body>
