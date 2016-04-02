@@ -45,4 +45,12 @@ class DefaultController extends Controller
         return $this->render('@App/Map/map.html.twig');
     }
 
+    /**
+     * @Route("/results", name="results")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function results(Request $request) {
+        return $this->render('@App/Results/index.html.twig');
+    }
 }
