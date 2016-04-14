@@ -2,11 +2,23 @@
 
 {%  block main %}
 
+    <link rel="stylesheet" href="{{ asset('bundles/app/css/index-styles.css') }}">
+
     <div>
-        <img style="width: 100%; position: relative; z-index: 0" src="{{ asset('bundles/app/images/comida-mexicana.jpg') }}">
-        <img style="width: 256px; height: 256px; position: absolute; z-index: 1; top: 50%; left: 10px" src="{{ asset('bundles/app/images/arrow.png') }}">
-        <span class="image-font">Encuentra tu ubicaci&oacute;n</span>
-        <div style="width: 500px"></div>
+        <img class="food" src="{{ asset('bundles/app/images/comida-mexicana.jpg') }}">
+        <img class="arrow" src="{{ asset('bundles/app/images/arrow.png') }}">
+        <span class="image-font">Encuentra tu ubicaci&oacute;n aproximada</span>
+        <div class="search">
+            <di class="search-left">
+                <label for="address" class="search-space">Ingresa tu direcci&oacute;n!</label>
+            </di>
+            <div class="search-right">
+                <div class="buttons-space">
+                    <input class="input-white" id="address" value="Metro Pantitlan">
+                    <input class="button-transparent" type="button" value="Buscar" onclick="address()">
+                </div>
+            </div>
+        </div>
     </div>
 
 
