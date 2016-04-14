@@ -148,9 +148,9 @@ ul {
 }
 .image-font {
     position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
+    top: 20%;
+    left: 30%;
+    right: 30%;
     margin-right: auto;
     margin-left: auto;
     font-size: 2rem;
