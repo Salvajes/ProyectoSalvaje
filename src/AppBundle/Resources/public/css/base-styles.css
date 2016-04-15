@@ -24,6 +24,9 @@ a{
     transition-duration: 0.4s;
     font-family: Arcon;
 }
+button:hover{
+    color: lightgray;
+}
 .logo-img {
     width: 86px;
 }

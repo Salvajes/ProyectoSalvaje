@@ -29,6 +29,13 @@
          */
         var map;
         var tile;
+        var polygon;
+
+        function createPolygon(array){
+            map.removeLayer(polygon);
+            polygon = L.polygon(array);
+            map.addLayer(polygon);
+        }
 
 
         $(document).ready(function(){
@@ -68,14 +75,14 @@
                 latitude = e.latlng.lat;
                 longitude = e.latlng.lng;
                 marker.setLatLng([Number(latitude), Number(longitude)]);
-                map.setView([Number(latitude), Number(longitude)], 11);
+                map.setView([Number(latitude), Number(longitude)], 9);
                 console.log("search",[Number(latitude), Number(longitude)]);
             });
 
             marker.on('dragend', function(e){
                 latitude = this.getLatLng().lat;
                 longitude =this.getLatLng().lng;
-                map.setView([Number(latitude), Number(longitude)], 11);
+                map.setView([Number(latitude), Number(longitude)], 9);
                 console.log("mover",[Number(latitude), Number(longitude)]);
             });
 
