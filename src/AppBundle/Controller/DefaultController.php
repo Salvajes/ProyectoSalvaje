@@ -42,11 +42,7 @@ class DefaultController extends Controller
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function mapAction(Request $request){
-        $address = $request->get("address");
-
-        return $this->render('@App/Map/map.html.twig', array(
-            'address' => $address
-        ));
+        return $this->render('@App/Map/map.html.twig');
     }
 
 }

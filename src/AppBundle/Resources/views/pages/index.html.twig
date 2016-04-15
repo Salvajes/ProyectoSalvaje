@@ -7,22 +7,9 @@
     <div>
         <img class="food" src="{{ asset('bundles/app/images/comida-mexicana.jpg') }}">
         <img class="arrow" src="{{ asset('bundles/app/images/arrow.png') }}">
+        <img class="arrow180" src="{{ asset('bundles/app/images/arrow.png') }}">
         <span class="image-font">Encuentra tu ubicaci&oacute;n aproximada</span>
-        <div class="search">
-            <div class="search-left">
-                <label for="address" class="search-space">Ingresa tu direcci&oacute;n!</label>
-            </div>
-            <div class="search-right">
-                <div class="buttons-space">
-                    <form id="theForm" action="{{ path('location') }}">
-                        <input class="input-white" id="address" name="address" value="Metro Pantitlan">
-                    </form>
-                    <span class="button-transparent" >
-                        <a href="" id="buscar">Buscar</a>
-                    </span>
-                </div>
-            </div>
-        </div>
+        <img class="tomato" src="{{ asset('bundles/app/images/tomato.png') }}">
     </div>
 
 
@@ -30,15 +17,13 @@
 {% block script %}
 
     <script>
-        $("#buscar").click(function (e) {
-            e.preventDefault();
-            $("#theForm").submit();
-        });
 
         $(document).ready(function(){
 
+            $(".tomato").on('click',function(){
+                window.location.href='{{ path('location') }}';
+            });
         });
-
     </script>
 
 {% endblock %}
