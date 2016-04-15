@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{{ asset('bundles/app/css/MarkerCluster.css') }}">
     <link rel="stylesheet" href="{{ asset('bundles/app/css/MarkerCluster.Default.css') }}">
     <link rel="stylesheet" href="{{ asset('bundles/app/css/map-style.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/app/css/leaflet-search.css') }}">
 
     <div id="mapCanvas"></div>
 
@@ -20,6 +21,7 @@
     <script src="{{ asset('bundles/app/js/leaflet.js') }}"></script>
     <script src="{{ asset('bundles/app/js/leaflet.label.js') }}"></script>
     <script src="{{ asset('bundles/app/js/leaflet.markercluster-src.js') }}"></script>
+    <script src="{{ asset('bundles/app/js/leaflet-search.js') }}"></script>
 
     <script>
 
@@ -42,6 +44,26 @@
                 attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
             }).addTo(map);
 
+            var marker = new L.marker(
+                    [23.1283279, -101.6752951],
+                    {draggable: true}
+            ).addTo(map);
+
+            var search = new L.Control.Search({
+                url: 'http://nominatim.openstreetmap.org/search?format=json&q={s}',
+                jsonpParam: 'json_callback',
+                propertyName: 'display_name',
+                propertyLoc: ['lat','lon'],
+                circleLocation: false,
+                markerLocation: false,
+                autoType: false,
+                autoCollapse: true,
+                minLength: 2,
+                zoom:10,
+                textPlaceholder: 'Buscar...'
+            });
+
+            map.addControl(search);
         });
 
 
