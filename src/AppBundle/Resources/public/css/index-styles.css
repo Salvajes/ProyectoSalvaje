@@ -1,4 +1,9 @@
-
+a{
+    color: black;
+}
+a:visited{
+    color: black;
+}
 .search {
     width: 800px;
     height: 100px;
@@ -46,6 +51,9 @@
 }
 .buttons-space{
     margin-bottom: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .search-space{
     margin-top: 20px;
@@ -54,21 +62,17 @@
 .button-transparent{
     background-color: white;
     color: black;
-    border: 2px solid transparent;
+    border: 10px solid transparent;
     transition-duration: 0.4s;
     font-family: Arcon;
-    width: 30%;
-    height: 40px;
 }
 .input-white{
     background-color: lightgray;
     color: black;
-    border: 2px solid transparent;
+    border: 10px solid transparent;
     transition-duration: 0.4s;
     font-family: Arcon;
-    width: 60%;
-    margin-left: 5%;
-    height: 40px;
+    width: 95%;
 }
 .button-transparent:hover{
     background-color: lightgrey;

@@ -9,13 +9,17 @@
         <img class="arrow" src="{{ asset('bundles/app/images/arrow.png') }}">
         <span class="image-font">Encuentra tu ubicaci&oacute;n aproximada</span>
         <div class="search">
-            <di class="search-left">
+            <div class="search-left">
                 <label for="address" class="search-space">Ingresa tu direcci&oacute;n!</label>
-            </di>
+            </div>
             <div class="search-right">
                 <div class="buttons-space">
-                    <input class="input-white" id="address" value="Metro Pantitlan">
-                    <input class="button-transparent" type="button" value="Buscar" onclick="address()">
+                    <form id="theForm" action="{{ path('location') }}">
+                        <input class="input-white" id="address" name="address" value="Metro Pantitlan">
+                    </form>
+                    <span class="button-transparent" >
+                        <a href="" id="buscar">Buscar</a>
+                    </span>
                 </div>
             </div>
         </div>
@@ -23,7 +27,18 @@
 
 
 {% endblock %}
-{% block script %}     
+{% block script %}
 
+    <script>
+        $("#buscar").click(function (e) {
+            e.preventDefault();
+            $("#theForm").submit();
+        });
+
+        $(document).ready(function(){
+
+        });
+
+    </script>
 
 {% endblock %}
