@@ -1,8 +1,10 @@
 {% extends "AppBundle::base.html.twig" %}
 
-{% block styles %}
-    <style>
+{% block main %}
 
+    <link rel="stylesheet" href="{{ asset('bundles/app/css/about-us-styles.css') }}">
+
+    <style type="text/css">
         .conocenos_nosotros_foto:nth-of-type(1){
             background-image: url("{{ asset('bundles/app/images/superman.jpg') }}");
             background-size: cover;
@@ -16,8 +18,7 @@
             background-size: cover;
         }
     </style>
-{% endblock %}
-{% block main %}
+
     <section class="parallax-container" data-parallax="scroll"
              data-image-src="{{ asset('bundles/app/images/mac-book.jpg') }}">
     </section>

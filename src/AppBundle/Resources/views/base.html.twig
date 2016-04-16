@@ -7,8 +7,7 @@
     <link rel="stylesheet" href="{{ asset('bundles/app/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('bundles/app/css/base-styles.css') }} ">
     <link rel="stylesheet" href="{{ asset('bundles/app/css/fonts.css') }}">
-    {% block styles %}
-    {% endblock %}
+
 </head>
 <body>
     <header class="header">
@@ -20,9 +19,7 @@
                 <button onclick="window.location.href='{{ path('blog') }}'" class="button">Blog</button>
                 <button onclick="window.location.href='{{ path('contact') }}'" class="button">Contacto</button>
                 <button onclick="window.location.href='{{ path('about_us') }}'" class="button">Nosotros</button>
-            </div>
-            <div class="center">
-                <button type="button" class="button" data-toggle="modal" data-target="#signModal">
+                <button id="signButton" type="button" class="button" data-toggle="modal" data-target="#signModal">
                     Registro
                 </button>
             </div>
@@ -93,6 +90,12 @@
             js.src = "//connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v2.5&appId=557455224416615";
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
+    </script>
+
+    <script>
+        $("#signButton").click(function(){
+            $("#signButton").css("border","transparent");
+        });
     </script>
 
     {% block script %}
