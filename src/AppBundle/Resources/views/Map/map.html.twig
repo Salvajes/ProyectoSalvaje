@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="{{ asset('bundles/app/css/leaflet-search.css') }}">
 
     <div id="mapCanvas">
-        <div id="ghost" style="background: transparent; position: absolute; z-index: 1001; bottom: 0;right: 0;width: 139px; height: 16px;"></div>
+        <div id="ghost" class="ghost"></div>
     </div>
 
 {% endblock %}
@@ -21,28 +21,20 @@
     <script src="{{ asset('bundles/app/js/leaflet.label.js') }}"></script>
     <script src="{{ asset('bundles/app/js/leaflet.markercluster-src.js') }}"></script>
     <script src="{{ asset('bundles/app/js/leaflet-search.js') }}"></script>
+    <script src="{{ asset('bundles/app/js/map.control.js') }}"></script>
 
     <script>
 
-        /**
-         * Mapa.
-         */
+        {# Variables para Mapa. #}
         var map;
         var tile;
-        var polygon;
 
-        function createPolygon(array){
-            map.removeLayer(polygon);
-            polygon = L.polygon(array);
-            map.addLayer(polygon);
-        }
-
+        {# Variable para crear un poligono. #}
+        var polygons = new Polygons();
 
         $(document).ready(function(){
 
-            /**
-             * Inicializa mapa.
-             */
+            {# Inicializa el mapa. #}
             map  = L.map('mapCanvas').setView([23.1283279, -101.6752951], 4 );
 
             tile = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -50,11 +42,13 @@
                 attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
             }).addTo(map);
 
+            {# Crea el marker con el cual se ubicara la posicion. #}
             var marker = new L.marker(
                     [23.1283279, -101.6752951],
                     {draggable: true}
             ).addTo(map);
 
+            {# Crea el controlador de busqueda. #}
             var search = new L.Control.Search({
                 url: 'http://nominatim.openstreetmap.org/search?format=json&q={s}',
                 jsonpParam: 'json_callback',
@@ -71,19 +65,20 @@
 
             map.addControl(search);
 
+            {# Maneja la latitud y longitud del punto obtenido en la busqueda. #}
             search.on('search_locationfound', function(e) {
                 latitude = e.latlng.lat;
                 longitude = e.latlng.lng;
                 marker.setLatLng([Number(latitude), Number(longitude)]);
-                map.setView([Number(latitude), Number(longitude)], 9);
-                console.log("search",[Number(latitude), Number(longitude)]);
+                map.setView([Number(latitude), Number(longitude)], 15);
+                polygons.createLatLngPolygon(latitude,longitude,1000);
             });
 
+            {# Mueve el marker a la posicion deseada. #}
             marker.on('dragend', function(e){
                 latitude = this.getLatLng().lat;
                 longitude =this.getLatLng().lng;
-                map.setView([Number(latitude), Number(longitude)], 9);
-                console.log("mover",[Number(latitude), Number(longitude)]);
+                polygons.createLatLngPolygon(latitude,longitude,1000);
             });
 
         });

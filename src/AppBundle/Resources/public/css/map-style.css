@@ -4,3 +4,12 @@
     z-index: 0;
     margin-top: 70px;
 }
+.ghost{
+    background: transparent;
+    position: absolute;
+    z-index: 1001;
+    bottom: 0;
+    right: 0;
+    width: 139px;
+    height: 16px;
+}
