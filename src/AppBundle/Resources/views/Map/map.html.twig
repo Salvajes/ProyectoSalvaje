@@ -32,6 +32,17 @@
         {# Variable para crear un poligono. #}
         var polygons = new Polygons();
 
+        function distance(lat,lng){
+            $.ajax({
+                url:'{{ path('distance_between_points') }}',
+                data: {lat:lat,lng:lng},
+                type: 'post',
+                success: function(data){
+                    console.log(data);
+                }
+            });
+        }
+
         $(document).ready(function(){
 
             {# Inicializa el mapa. #}
@@ -72,6 +83,8 @@
                 marker.setLatLng([Number(latitude), Number(longitude)]);
                 map.setView([Number(latitude), Number(longitude)], 15);
                 polygons.createLatLngPolygon(latitude,longitude,1000);
+                distance(Number(latitude),Number(longitude));
+                console.log(Number(latitude),Number(longitude));
             });
 
             {# Mueve el marker a la posicion deseada. #}
@@ -79,6 +92,8 @@
                 latitude = this.getLatLng().lat;
                 longitude =this.getLatLng().lng;
                 polygons.createLatLngPolygon(latitude,longitude,1000);
+                distance(Number(latitude),Number(longitude));
+                console.log(Number(latitude),Number(longitude));
             });
 
         });
