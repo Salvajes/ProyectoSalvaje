@@ -1,6 +1,12 @@
 # Symfony directories
 vendor/*
 bin/*
-web/bundles/*
+web/*
 var/*
-.idea/
+.idea/*
+
+# Configuration files
+app/config/parameters.yml
+app/config/parameters.yml.dist
+app/config/routing.yml
+/vendor
