@@ -4,12 +4,8 @@
 
     <link rel="stylesheet" href="{{ asset('bundles/app/css/index-styles.css') }}">
 
-    <div>
-        <img class="food" src="{{ asset('bundles/app/images/comida-mexicana.jpg') }}">
-        <img class="arrow" src="{{ asset('bundles/app/images/arrow.png') }}">
-        <img class="arrow180" src="{{ asset('bundles/app/images/arrow.png') }}">
-        <span class="image-font">Encuentra tu ubicaci&oacute;n aproximada</span>
-        <img class="tomato" src="{{ asset('bundles/app/images/tomato.png') }}">
+    <div style="width: 100%; height: 600px; top:200px; z-index: 1; position: relative">
+        <span style="color: black">Aqui ira algo que daniel crea adecuado.</span>
     </div>
 
 
@@ -20,9 +16,6 @@
 
         $(document).ready(function(){
 
-            $(".tomato").on('click',function(){
-                window.location.href='{{ path('location') }}';
-            });
         });
     </script>
 
