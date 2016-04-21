@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Mi cuenta | Vendedor</title>
+    <style>
+        body {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top:0;
+            bottom: 0;
+            background-color: #f7f7f7;
+            padding: 0; margin: 0;
+            font-size: 11pt;
+        }
+        ul {
+            margin: 0; padding: 0;
+            text-decoration: none;
+            list-style: none;
+        }
+        a, a:visited, a:link {
+            text-decoration: none;
+            color: inherit;
+        }
+        .header{
+            position: absolute;
+            left: 0; top:0; right:0; z-index: 10;
+            height: 60px;
+            background-color: white;
+            box-shadow: 0 1px 12px -3px rgba(0,0,0,0.3);
+            padding: 0px 90px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .header_list {
+            display: flex;
+            align-items: center;
+        }
+        .header_list li {
+            margin-left: 10px;
+        }
+        .btn-special {
+            padding: .5rem;
+            border-radius: 2px;
+            border: 1px solid orange;
+            cursor: pointer;
+        }
+        .btn-special:hover {
+            background-color: #f7f7f7;
+            transition: background-color 100ms linear;
+        }
+        .btn-action {
+            padding: .25rem;
+            border-radius: 2px;
+            border: 1px solid navajowhite;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        .btn-action:hover {
+            background-color: #f7f7f7;
+            transition: background-color 100ms linear;
+        }
+        .aside-actions {
+            position: absolute; z-index: 10;
+            left: 0; top: 70px; bottom: 10px;
+            width: 80px;
+            background-color: white;
+            box-shadow: 1px 1px 12px -3px rgba(0,0,0,0.3);
+        }
+        .aside-actions {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            border-radius: 0px 4px 4px 0px;
+        }
+        .aside_action {
+            width: 50px;
+            height: 50px;
+            border: 1px solid crimson;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        .aside_action:hover {
+            background-color: #f7f7f7;
+            transition: background-color 100ms linear;
+        }
+    </style>
+    {% block style %}
+    {% endblock %}
+
+</head>
+<body>
+    <header class="header">
+            <a href="{{ path('vendedores_index') }}">
+                <img src="{{ asset('bundles/app/images/salvajes.png') }}" class="logo-img" style="width: 76px;"/>
+            </a>
+            <div class="header_actions">
+                <ul class="header_list">
+                    <li><a href="#">Ayuda</a></li>
+                    <li class="btn-special">Cerrar sesión</li>
+                </ul>
+            </div>
+    </header>
+    <aside class="aside-actions">
+        <a href="{{ path('vendedores_index') }}"><div class="aside_action">Mi cuenta</div></a>
+        <a href="{{ path('vendedores_create_menu') }}"><div class="aside_action">Mis menús</div></a>
+        <div class="aside_action">Mis ventas</div>
+        <div class="aside_action">Otro</div>
+    </aside>
+
+    <div style="position: absolute; top:70px; right: 10px;  bottom: 0px; left: 90px; z-index: 10;">
+        {% block content %}{% endblock %}
+    </div>
+
+    <script src="{{ asset('bundles/app/js/jquery-1.12.0.min.js') }}"></script>
+    {% block script %}
+    {% endblock %}
+</body>
+</html>
