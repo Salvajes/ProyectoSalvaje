@@ -13,6 +13,12 @@
         <div id="ghost" class="ghost"></div>
     </div>
 
+    <div id="bottonMenu">
+        <span style="font-size: 30px" class="icon-menu"></span>
+    </div>
+
+    <div id="restaurantsList"></div>
+    
 {% endblock %}
 
 {% block script %}
@@ -96,6 +102,10 @@
                 console.log(Number(latitude),Number(longitude));
             });
 
+            $("#bottonMenu").click(function(){
+                $("#restaurantsList").toggle();
+            });
+            
         });
 
 
