@@ -1,0 +1,8 @@
+services:
+#    savage_auth.example:
+#        class: Savage\AuthBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]
+
+    jaime.user.provider:
+        class: Savage\AuthBundle\Security\User\ForProvider
+        arguments: ['@doctrine.orm.entity_manager']
