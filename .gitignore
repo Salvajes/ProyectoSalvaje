@@ -1,6 +1,4 @@
 # Symfony directories
-vendor/*
-bin/*
 web/*
 var/*
 .idea/*
@@ -9,4 +7,3 @@ var/*
 app/config/parameters.yml
 app/config/parameters.yml.dist
 app/config/routing.yml
-/vendor
