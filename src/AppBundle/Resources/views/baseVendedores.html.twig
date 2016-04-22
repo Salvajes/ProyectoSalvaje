@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Mi cuenta | Vendedor</title>
+    <link rel="stylesheet" href="{{ asset('bundles/app/css/fonts.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/app/css/style-icons.css') }}">
     <style>
         body {
             position: absolute;
@@ -13,6 +15,7 @@
             background-color: #f7f7f7;
             padding: 0; margin: 0;
             font-size: 11pt;
+            font-family: arcon, Helvetica;
         }
         ul {
             margin: 0; padding: 0;
@@ -88,6 +91,10 @@
             background-color: #f7f7f7;
             transition: background-color 100ms linear;
         }
+        .iconmenu {
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
     </style>
     {% block style %}
     {% endblock %}
@@ -106,8 +113,18 @@
             </div>
     </header>
     <aside class="aside-actions">
-        <a href="{{ path('vendedores_index') }}"><div class="aside_action">Mi cuenta</div></a>
-        <a href="{{ path('vendedores_create_menu') }}"><div class="aside_action">Mis menús</div></a>
+        <a href="{{ path('vendedores_index') }}">
+            <div class="aside_action">
+                <span class="iconmenu icon-cogs"></span>
+                <span>Mi cuenta</span>
+            </div>
+        </a>
+        <a href="{{ path('vendedores_create_menu') }}">
+            <div class="aside_action">
+                <span class="iconmenu icon-book"></span>
+                <span>Mi cuenta</span>
+            </div>
+        </a>
         <div class="aside_action">Mis ventas</div>
         <div class="aside_action">Otro</div>
     </aside>
