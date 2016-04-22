@@ -28,7 +28,7 @@
 #restaurantsList{
     background-color: white;
     position: absolute;
-    z-index: 1;
+    z-index: 0;
     top: 80px;
     right: 10px;
     width: 200px;
