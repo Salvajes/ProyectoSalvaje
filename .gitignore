@@ -1,4 +1,6 @@
 # Symfony directories
+vendor/*
+bin/*
 web/*
 var/*
 .idea/*
