@@ -45,13 +45,17 @@
 
     <div id="boxes" class="box-info">
         <div id="plansBox" class="ghost-box">
-
+            <span style="font-size: 80px; margin-bottom: 20px;" class="icon-stats-dots"></span>
+            <span style="font-family: arcon; font-size: 20px">Haz que tu negocio crezca.</span>
         </div>
         <div id="visionBox" class="ghost-box">
-
+            <span style="font-size: 80px; margin-bottom: 20px;" class="icon-shield"></span>
+            <span style="font-family: arcon; font-size: 20px">Conoce lo que hacemos.</span>
         </div>
         <div id="usersBox" class="ghost-box">
-
+            <span></span>
+            <span style="font-size: 80px; margin-bottom: 20px;" class="icon-users"></span>
+            <span style="font-family: arcon; font-size: 20px">Ofertas a tu alcance.</span>
         </div>
     </div>
 
@@ -61,7 +65,17 @@
     <script>
 
         $(document).ready(function(){
+            $("#plansBox").click(function(){
+                window.location.href = '{{ path('location') }}';
+            });
 
+            $("#visionBox").click(function(){
+                window.location.href = '{{ path('about_us') }}';
+            });
+
+            $("#usersBox").click(function(){
+                window.location.href = '{{ path('location') }}';
+            });
         });
     </script>
 
