@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{{ asset('bundles/app/css/MarkerCluster.Default.css') }}">
     <link rel="stylesheet" href="{{ asset('bundles/app/css/map-style.css') }}">
     <link rel="stylesheet" href="{{ asset('bundles/app/css/leaflet-search.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/app/css/jquery.selectBoxIt.css') }}">
 
     <div id="mapCanvas">
         <div id="ghost" class="ghost"></div>
@@ -17,7 +18,16 @@
         <span style="font-size: 30px" class="icon-menu"></span>
     </div>
 
-    <div id="restaurantsList"></div>
+    <div id="restaurantsList">
+        <div id="selectBox">
+            <label for="distance"></label>
+            <select id="distance">
+                <option>500 m</option>
+                <option selected>1 km</option>
+                <option>2 km</option>
+            </select>
+        </div>
+    </div>
     
 {% endblock %}
 
@@ -28,6 +38,8 @@
     <script src="{{ asset('bundles/app/js/leaflet.markercluster-src.js') }}"></script>
     <script src="{{ asset('bundles/app/js/leaflet-search.js') }}"></script>
     <script src="{{ asset('bundles/app/js/map.control.js') }}"></script>
+    <script src="{{ asset('bundles/app/js/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('bundles/app/js/jquery.selectBoxIt.js') }}"></script>
 
     <script>
 
@@ -105,7 +117,8 @@
             $("#bottonMenu").click(function(){
                 $("#restaurantsList").toggle();
             });
-            
+
+            $("select").selectBoxIt();
         });
 
 
