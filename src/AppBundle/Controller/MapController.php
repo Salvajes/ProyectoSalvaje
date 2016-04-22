@@ -29,11 +29,12 @@ class MapController extends Controller
 
         $lat = $request->get('lat');
         $lng = $request->get('lng');
+        $distance = $request->get('distance');
         $stmt = "SELECT p.id ".
             "from points p ".
             "where ROUND(6353 * 2 * ASIN(SQRT( POWER(SIN((p.lat - abs($lat)) * pi()/180 / 2),2) ".
             "+ COS(p.lat * pi()/180 ) * COS(abs($lat) *  pi()/180) * POWER(SIN((p.lng - $lng) ".
-            "*  pi()/180 / 2), 2) )), 2) <= 1";
+            "*  pi()/180 / 2), 2) )), 2) <= $distance";
 
         $points = PdoUtil::selectFromCursor($em->getConnection(),$stmt);
 

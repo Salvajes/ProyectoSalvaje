@@ -8,6 +8,9 @@
  */
 function Polygons () {
     this.polygon_ = undefined;
+    this.lat_ = 0;
+    this.lng_ = 0;
+    this.distance_ = 1000;
 }
 
 Polygons.prototype.setLat = function(lat){
@@ -91,10 +94,13 @@ Polygons.prototype.destVincenty = function(lat1, lon1, brng, dist){
 };
 
 Polygons.prototype.createLatLngPolygon = function(lat,lng,distance){
+    this.lat_ = lat;
+    this.lng_ = lng;
+    this.distance_ = distance;
     var count = 0;
     var latlangArray = [];
     for(var i = 0; i < 20; i++){
-        latlangArray.push(this.destVincenty(lat,lng,count,distance));
+        latlangArray.push(this.destVincenty(this.lat_,this.lng_,count,this.distance_));
         count = count +18;
     }
     this.createPolygon(latlangArray);

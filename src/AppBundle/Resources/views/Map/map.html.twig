@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{{ asset('bundles/app/css/MarkerCluster.Default.css') }}">
     <link rel="stylesheet" href="{{ asset('bundles/app/css/map-style.css') }}">
     <link rel="stylesheet" href="{{ asset('bundles/app/css/leaflet-search.css') }}">
-    <link rel="stylesheet" href="{{ asset('bundles/app/css/jquery.selectBoxIt.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/app/css/bootstrap-select.css') }}">
 
     <div id="mapCanvas">
         <div id="ghost" class="ghost"></div>
@@ -19,14 +19,12 @@
     </div>
 
     <div id="restaurantsList">
-        <div id="selectBox">
-            <label for="distance"></label>
-            <select id="distance">
-                <option>500 m</option>
-                <option selected>1 km</option>
-                <option>2 km</option>
-            </select>
-        </div>
+        <label for="distance"></label>
+        <select id="distance" class="selectpicker">
+            <option value="500">500 m</option>
+            <option value="1000" selected>1 km</option>
+            <option value="2000">2 km</option>
+        </select>
     </div>
     
 {% endblock %}
@@ -38,27 +36,32 @@
     <script src="{{ asset('bundles/app/js/leaflet.markercluster-src.js') }}"></script>
     <script src="{{ asset('bundles/app/js/leaflet-search.js') }}"></script>
     <script src="{{ asset('bundles/app/js/map.control.js') }}"></script>
-    <script src="{{ asset('bundles/app/js/jquery-ui.min.js') }}"></script>
-    <script src="{{ asset('bundles/app/js/jquery.selectBoxIt.js') }}"></script>
+    <script src="{{ asset('bundles/app/js/bootstrap-select.js') }}"></script>
 
     <script>
 
         {# Variables para Mapa. #}
         var map;
         var tile;
+        var latitude = 23.1283279;
+        var longitude = -101.6752951;
 
         {# Variable para crear un poligono. #}
         var polygons = new Polygons();
 
-        function distance(lat,lng){
+        function distance(lat,lng,distance){
             $.ajax({
                 url:'{{ path('distance_between_points') }}',
-                data: {lat:lat,lng:lng},
+                data: {lat:lat,lng:lng,distance:distance},
                 type: 'post',
                 success: function(data){
                     console.log(data);
                 }
             });
+        }
+
+        function transformDistance(distance){
+            return distance/1000;
         }
 
         $(document).ready(function(){
@@ -96,31 +99,38 @@
 
             {# Maneja la latitud y longitud del punto obtenido en la busqueda. #}
             search.on('search_locationfound', function(e) {
+                var distance_ = $("#distance").val();
                 latitude = e.latlng.lat;
                 longitude = e.latlng.lng;
                 marker.setLatLng([Number(latitude), Number(longitude)]);
                 map.setView([Number(latitude), Number(longitude)], 15);
-                polygons.createLatLngPolygon(latitude,longitude,1000);
-                distance(Number(latitude),Number(longitude));
-                console.log(Number(latitude),Number(longitude));
+                polygons.createLatLngPolygon(latitude,longitude,Number(distance_));
+                distance(Number(latitude),Number(longitude),transformDistance(Number(distance_)));
+                console.log(Number(latitude),Number(longitude),transformDistance(Number(distance_)));
             });
 
             {# Mueve el marker a la posicion deseada. #}
             marker.on('dragend', function(e){
+                var distance_ = $("#distance").val();
                 latitude = this.getLatLng().lat;
                 longitude =this.getLatLng().lng;
-                polygons.createLatLngPolygon(latitude,longitude,1000);
-                distance(Number(latitude),Number(longitude));
-                console.log(Number(latitude),Number(longitude));
+                polygons.createLatLngPolygon(latitude,longitude,Number(distance_));
+                distance(Number(latitude),Number(longitude),transformDistance(Number(distance_)));
+                console.log(Number(latitude),Number(longitude),transformDistance(Number(distance_)));
             });
 
             $("#bottonMenu").click(function(){
                 $("#restaurantsList").toggle();
             });
 
-            $("select").selectBoxIt();
-        });
+            $("#distance").on('change',function(){
+                var distance_ = $("#distance").val();
+                polygons.createLatLngPolygon(latitude,longitude,Number(distance_));
+                distance(Number(latitude),Number(longitude),transformDistance(Number(distance_)));
+                console.log(Number(latitude),Number(longitude),transformDistance(Number(distance_)));
+            });
 
+        });
 
     </script>
 
