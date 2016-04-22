@@ -16,7 +16,7 @@
 #bottonMenu{
     background-color: white;
     position: absolute;
-    z-index: 2;
+    z-index: 1;
     top: 80px;
     right: 10px;
     width: 50px;
