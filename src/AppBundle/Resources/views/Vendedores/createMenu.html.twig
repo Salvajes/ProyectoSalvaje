@@ -16,20 +16,27 @@
 {% endblock %}
 
 {% block content %}
-    <span style="font-size: 2rem; font-family: arcon, Helvetica;">Mis Menús</span>
-    <ul class="bar">
-        <li>
-            <label for="misMenus" style="display: block;">Mis menús</label>
-            <select name="misMenus" id="misMenus">
-                <option value="0">Menu 1</option>
-                <option value="1">Menu 2</option>
-                <option value="2">Menu 3</option>
-            </select>
-        </li>
-        <li>
-            <span class="btn-action">Crear menú</span>
-        </li>
-    </ul>
+    <div class="panel">
+        <div class="panel-header">
+            <span style="font-size: 2rem; font-family: arcon, Helvetica;">Mis Menús</span>
+            <ul class="bar">
+                <li>
+                    <label for="misMenus" style="display: block;">Mis menús</label>
+                    <select name="misMenus" id="misMenus">
+                        <option value="0">Menu 1</option>
+                        <option value="1">Menu 2</option>
+                        <option value="2">Menu 3</option>
+                    </select>
+                </li>
+                <li>
+                    <span class="btn-action">Crear menú</span>
+                </li>
+            </ul>
+        </div>
+        <div class="panel-body">
+
+        </div>
+    </div>
 {% endblock %}
 
 {% block script %}
