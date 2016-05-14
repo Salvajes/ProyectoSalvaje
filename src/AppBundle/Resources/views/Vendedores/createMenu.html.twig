@@ -21,7 +21,7 @@
             <span class="panel-title">Mis Menús</span>
             <ul class="bar-action">
                 <li>
-                    <span class="btn-action">Crear menú</span>
+                    <span class="btn-action" id="createMenuBtn">Crear menú</span>
                 </li>
             </ul>
         </div>
@@ -33,6 +33,9 @@
             </a>
         </div>
     </div>
+    <div id="menus">
+
+    </div>
 {% endblock %}
 
 {% block script %}
@@ -40,9 +43,36 @@
 
         var mnuStr = "<div class='panel'>" +
                         "<div class='panel-header'>" +
-                            
+                            "<span>T&iacute;tulo</span>" +
+                            "<ul class='bar-action'>" +
+                                "<li class='close'>&times;</li>"+
+                            "</ul>"
                         "</div>" +
+                        "<div class='panel-body'>" +
+                            "LISTA" +
+                        "</div>"
                     "</div>";
+
+        function createMenuPanel() {
+            $("#menus").append(mnuStr);
+        }
+
+        function closeMenuPanel(panel) {
+            $(panel).remove();
+        }
+
+        $(document).ready(function() {
+
+            $("#createMenuBtn").click(function() {
+                createMenuPanel();
+            });
+
+            $("#menus").on("click",".panel .close", function() {
+                var panel = $(this).closest(".panel");
+                closeMenuPanel(panel);
+            });
+
+        });
 
     </script>
 {% endblock %}
