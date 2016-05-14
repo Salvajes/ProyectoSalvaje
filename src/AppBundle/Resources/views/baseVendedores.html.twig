@@ -98,21 +98,24 @@
             padding: 1rem;
             background-color: white;
             border-radius: 3px;
-            display: flex;
-            justify-content: space-between;
             align-items: center;
             margin-bottom: 20px;
             box-shadow: 1px 1px 12px -3px rgba(0, 0, 0, 0.3);
         }
-        
+
         .panel-header {
             display: flex;
             justify-content: space-between;
+            align-items: center;
             width: 100%;
+        }
+        .panel-body {
+            padding: 10px 0px;
         }
 
         .panel-title {
-            font-size: 1.5rem;
+            font-size: 2rem;
+            font-family: arcon, Helvetica;
         }
 
         .panel-description {
@@ -129,6 +132,22 @@
             padding: 5px;
             font-size: 1.3rem;
             width: 200px;
+        }
+
+        .circle-action {
+            width: 70px; height: 70px;
+            border-radius: 50%;
+            border: 1px solid #02C39A;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: 300ms;
+        }
+
+        .circle-action:hover {
+            background-color: #00A896;
+            color: #fff;
+            transition: 300ms;
         }
     </style>
     {% block style %}

@@ -2,14 +2,14 @@
 
 {% block style %}
     <style>
-        .bar{
+        .bar-action{
             background-color: white;
             border-radius: 4px;
             display: flex;
             justify-content: flex-start;
             align-items: center;
         }
-        .bar li {
+        .bar-action li {
             margin-right: 10px;
         }
     </style>
@@ -18,26 +18,31 @@
 {% block content %}
     <div class="panel">
         <div class="panel-header">
-            <span style="font-size: 2rem; font-family: arcon, Helvetica;">Mis Menús</span>
-            <ul class="bar">
-                <li>
-                    <label for="misMenus" style="display: block;">Mis menús</label>
-                    <select name="misMenus" id="misMenus">
-                        <option value="0">Menu 1</option>
-                        <option value="1">Menu 2</option>
-                        <option value="2">Menu 3</option>
-                    </select>
-                </li>
+            <span class="panel-title">Mis Menús</span>
+            <ul class="bar-action">
                 <li>
                     <span class="btn-action">Crear menú</span>
                 </li>
             </ul>
         </div>
         <div class="panel-body">
-
+            <a href="#" data-menu-id="1">
+                <div class="circle-action">
+                    <span>Men&uacute; 1</span>
+                </div>
+            </a>
         </div>
     </div>
 {% endblock %}
 
 {% block script %}
+    <script>
+
+        var mnuStr = "<div class='panel'>" +
+                        "<div class='panel-header'>" +
+                            
+                        "</div>" +
+                    "</div>";
+
+    </script>
 {% endblock %}
