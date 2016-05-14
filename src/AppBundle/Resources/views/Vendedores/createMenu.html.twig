@@ -12,6 +12,17 @@
         .bar-action li {
             margin-right: 10px;
         }
+        .editable input[type="text"] {
+            padding: 3px 2px;
+            border: 1px solid transparent;
+            border-radius: 2px;
+            font-size: 1.1rem;
+            transition: box-shadow 0.3s, border 0.3s;
+        }
+        .editable input[type="text"]:focus {
+            border: 1px solid #02C39A;
+            box-shadow: 0 0 5px 1px #02C39A;
+        }
     </style>
 {% endblock %}
 
@@ -43,7 +54,7 @@
 
         var mnuStr = "<div class='panel'>" +
                         "<div class='panel-header'>" +
-                            "<span>T&iacute;tulo</span>" +
+                            "<span class='editable'><input type='text' value='Titulo'></span>" +
                             "<ul class='bar-action'>" +
                                 "<li class='close'>&times;</li>"+
                             "</ul>"
@@ -61,15 +72,25 @@
             $(panel).remove();
         }
 
+        function replaceToEdit(toEdit) {
+            var text = $(toEdit).text();
+            var input = "<input type=''text class='editing' value='"+ text +"'/>";
+            $(toEdit).replaceWith(input);
+        }
+
         $(document).ready(function() {
 
             $("#createMenuBtn").click(function() {
                 createMenuPanel();
             });
 
-            $("#menus").on("click",".panel .close", function() {
+            $("#menus").on("click", ".panel .close", function() {
                 var panel = $(this).closest(".panel");
                 closeMenuPanel(panel);
+            });
+
+            $("#menus").on("click", ".panel .editable", function() {
+                //replaceToEdit(this);
             });
 
         });
