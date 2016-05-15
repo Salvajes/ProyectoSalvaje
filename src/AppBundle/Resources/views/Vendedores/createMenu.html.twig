@@ -13,6 +13,9 @@
             margin-right: 10px;
         }
 
+        .new-section {
+            cursor: pointer;
+        }
         .editable input[type="text"] {
             padding: 3px 2px;
             border: 1px solid transparent;
@@ -55,53 +58,62 @@
 
         var mnuStr = "<div class='panel'>" +
                         "<div class='panel-header'>" +
-                            "<span class='editable'><input type='text' value='Titulo'></span>" +
+                            "<span class='editable'><input type='text' value='Titulo Menu'></span>" +
                             "<ul class='bar-action'>" +
-                                "<li class='new-section'>seccion</li>"+
+                                "<li class='new-section'> crear seccion</li>"+
                                 "<li class='close'>&times;</li>"+
                             "</ul>" +
                         "</div>" +
                         "<div class='panel-body'>" +
-                            "<span class='editable'><input type='text' value='Seccion'></span>" +
-                            "<table>" +
-                                "<thead>" +
-                                    "<tr>" +
-                                        "<td style='width: 200px;'>Platillo</td>" +
-                                        "<td style='width: 200px;'>Precio</td>" +
-                                        "<td style='width: 20px;'></td>" +
-                                    "</tr>" +
-                                "</thead>" +
-                                "<tbody>" +
-                                    "<tr>" +
-                                        "<td><input type='text'></td>" +
-                                        "<td><input type='text'></td>" +
-                                        "<td class='remove-row'>borrar</td>" +
-                                    "</tr>" +
-                                    "<tr>" +
-                                        "<td colspan='2'></td>" +
-                                        "<td class='add-row'>new</td>" +
-                                    "</tr>" +
-                                "</tbody>" +
-                            "</table>" +
+                            "<div class='section-menu'>" +
+                                "<span class='editable'><input type='text' value='Seccion'></span>" +
+                                "<table>" +
+                                    "<thead>" +
+                                        "<tr>" +
+                                            "<td style='width: 200px;'>Platillo</td>" +
+                                            "<td style='width: 200px;'>Precio</td>" +
+                                            "<td style='width: 20px;'></td>" +
+                                        "</tr>" +
+                                    "</thead>" +
+                                    "<tbody>" +
+                                        "<tr>" +
+                                            "<td><input type='text'></td>" +
+                                            "<td><input type='text'></td>" +
+                                            "<td class='remove-row'>borrar</td>" +
+                                        "</tr>" +
+                                        "<tr>" +
+                                            "<td colspan='2'></td>" +
+                                            "<td class='add-row'>new</td>" +
+                                        "</tr>" +
+                                    "</tbody>" +
+                                "</table>" +
+                            "</div>" +
                         "</div>" +
                     "</div>";
 
-        var newMnuStr = "<span class='editable'><input type='text' value='Seccion'></span>" +
-                        "<table>" +
-                            "<thead>" +
-                                "<tr>" +
-                                    "<td>Platillo</td>" +
-                                    "<td>Precio</td>" +
-                                    "<td></td>" +
-                                "</tr>" +
-                            "</thead>" +
-                            "<tbody>" +
-                                "<tr>" +
-                                    "<td colspan='2'></td>" +
-                                    "<td class='add-row'>new</td>" +
-                                "</tr>" +
-                            "</tbody>" +
-                        "</table>";
+        var newSectionStr = "<div class='section-menu'>" +
+                                "<span class='editable'><input type='text' value='Seccion'></span>" +
+                                "<table>" +
+                                    "<thead>" +
+                                        "<tr>" +
+                                            "<td style='width: 200px;'>Platillo</td>" +
+                                            "<td style='width: 200px;'>Precio</td>" +
+                                            "<td style='width: 20px;'></td>" +
+                                        "</tr>" +
+                                    "</thead>" +
+                                    "<tbody>" +
+                                        "<tr>" +
+                                            "<td><input type='text'></td>" +
+                                            "<td><input type='text'></td>" +
+                                            "<td class='remove-row'>borrar</td>" +
+                                        "</tr>"+
+                                        "<tr>" +
+                                            "<td colspan='2'></td>" +
+                                            "<td class='add-row'>new</td>" +
+                                        "</tr>" +
+                                    "</tbody>" +
+                                "</table>" +
+                            "</div>";
 
         function createMenuPanel() {
             $("#menus").append(mnuStr);
@@ -115,9 +127,17 @@
             var tr = "<tr>" +
                         "<td><input type='text'></td>" +
                         "<td><input type='text'></td>" +
-                        "<td class='remove-row'>remove</td>" +
+                        "<td class='remove-row'>borrar</td>" +
                     "</tr>";
-            $(currentTable + " tr:last-of-type").before(tr);
+            $(currentTable).find("tbody tr:last-of-type").before(tr);
+        }
+
+        function removeRow(currentRow) {
+            $(currentRow).remove();
+        }
+
+        function addNewSection(currentPanel) {
+            $(currentPanel).find('.section-menu:last-of-type').after(newSectionStr);
         }
 
         $(document).ready(function() {
@@ -130,15 +150,25 @@
                 var panel = $(this).closest(".panel");
                 closeMenuPanel(panel);
             });
+
             $("#menus").on("click", ".panel .new-section", function() {
                 //replaceToEdit(this);
             });
+
             $("#menus").on("click", ".panel .add-row", function() {
                 var currentTable = $(this).closest('table');
                 addRow(currentTable);
             });
 
+            $("#menus").on("click", ".panel .remove-row", function() {
+                var currentRow = $(this).closest('tr');
+                removeRow(currentRow);
+            });
 
+            $("#menus").on("click", ".panel .new-section", function() {
+                var currentPanel = $(this).closest('.panel');
+                addNewSection(currentPanel);
+            });
 
         });
 
