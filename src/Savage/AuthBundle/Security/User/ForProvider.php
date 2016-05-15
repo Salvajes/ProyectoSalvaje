@@ -27,11 +27,11 @@ class ForProvider implements UserProviderInterface
     public function loadUserByUsername($username)
     {
         $user = $this->em
-            ->createQuery("select u from AppBundle:Users  u where u.username = :username or u.email = :username")
+            ->createQuery("select u from AppBundle:Users u where (u.username = :username or u.email = :username)")
             ->setParameter("username", $username)
             ->getOneOrNullResult();
 
-        if (is_null($user)) {
+        if (is_null($user) || !is_null($user->getDeletedAt())) {
             throw new UsernameNotFoundException("EL nombre de usuario no existe");
         }
 
@@ -40,7 +40,8 @@ class ForProvider implements UserProviderInterface
             "id" => $user->getId(),
         ));
 
-        return new UserForProvider($user->getUsername(), $user->getPassword(), $user->getSalt(), $user->getRoles());
+        return new UserForProvider($user->getId(), $user->getUsername(), $user->getPassword(), $user->getSalt(),
+            $user->getAvatarId(), $user->getRoles());
 
     }
 

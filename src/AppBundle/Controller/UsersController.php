@@ -18,12 +18,46 @@ class UsersController extends Controller
 {
 
     const TAG = "SAVAGETEAM";
+
+    /**
+     * @Route("/users", name="admin.users.index")
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function indexAction(Request $request)
+    {
+        $con = $this->getDoctrine()->getConnection();
+        $search = $request->get("search");
+        if (strlen(trim($search)) == 0) {
+            $search = "-1";
+        }
+        $stmt = "
+        select
+            u.id,
+            u.username,
+            u.realname,
+            u.email,
+            a.path
+        from users u
+            join avatar a on u.avatar_id=a.id
+        where
+            ('$search' = '-1' or u.username like '%$search%' or u.realname like '%$search%')
+        and
+            u.deleted_at is null
+        order by u.created_at asc
+        ";
+        $users = PdoUtil::selectFromCursor($con, $stmt);
+
+        return $this->render("AppBundle:Users:index.html.twig", array(
+            "users" => $users,
+        ));
+    }
+
     /**
      * @Route("/newUser", name="admin.users.new")
      * @param $name
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function indexAction(Request $request)
+    public function newUserAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
         $name = $request->get("name");
@@ -194,5 +228,35 @@ class UsersController extends Controller
         ));
     }
 
+    /**
+     * @Route("/disabledUser", name="admin.users.disabled")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function deleteUserAction(Request $request)
+    {
+        $con = $this->getDoctrine()->getConnection();
+        $id = $request->get("id");
+        $username = $request->get("username");
+        $email = $request->get("email");
+
+        $stmt = "
+        update users
+            set users.deleted_at=now()
+        where
+            users.id=:id
+        and
+            users.username=:username
+        and
+            users.email=:email
+        ";
+        PdoUtil::executePrepared($con, $stmt, array(
+            "id" => $id,
+            "username" => $username,
+            "email" => $email,
+        ));
+
+        return $this->redirectToRoute("admin.users.index");
+    }
 
 }

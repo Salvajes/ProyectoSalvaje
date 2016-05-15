@@ -17,7 +17,7 @@
     <div class="full-container">
 
         {% for message in app.session.flashBag.get("warning") %}
-        <div class="alert alert-danger">
+        <div class="alert alert-danger top-10">
             <p>{{ message }}</p>
         </div>
         {% endfor %}

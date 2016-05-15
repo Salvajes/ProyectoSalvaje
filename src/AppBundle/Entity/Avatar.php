@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Avatar
  *
- * @ORM\Table(name="Avatar")
+ * @ORM\Table(name="avatar")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\AvatarRepository")
  */
 class Avatar

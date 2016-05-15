@@ -21,12 +21,6 @@ security:
         appanel_login:
             pattern:    ^/appanel/login
             security:   false
-        user_provisional_new:
-            pattern:    ^/appanel/createUser
-            security:   false
-        user_provisional_create:
-                    pattern:    ^/appanel/newUser
-                    security:   false
         upload_avatar:
             pattern:    ^/appanel/uploadAvatar
             security:   false

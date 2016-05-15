@@ -15,16 +15,20 @@ use Symfony\Component\Security\Core\User\UserInterface;
 class UserForProvider implements UserInterface, EquatableInterface
 {
 
+    private $id;
     private $username;
     private $password;
     private $salt;
+    private $avatarId;
     private $roles;
 
-    public function __construct($username, $password, $salt, array $roles)
+    public function __construct($id, $username, $password, $salt, $avatar, array $roles)
     {
+        $this->id = $id;
         $this->username = $username;
         $this->password = $password;
         $this->salt = $salt;
+        $this->avatarId = $avatar;
         $this->roles = $roles;
     }
 
@@ -82,6 +86,22 @@ class UserForProvider implements UserInterface, EquatableInterface
     public function getUsername()
     {
         return $this->username;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAvatarId()
+    {
+        return $this->avatarId;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
     }
 
     /**
