@@ -8,6 +8,7 @@
 
 namespace Savage\AuthBundle\Security\User;
 
+use AppBundle\Util\PdoUtil;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
@@ -33,6 +34,11 @@ class ForProvider implements UserProviderInterface
         if (is_null($user)) {
             throw new UsernameNotFoundException("EL nombre de usuario no existe");
         }
+
+        $stmt = "update users set last_login=now() where id=:id";
+        PdoUtil::executePrepared($this->em->getConnection(), $stmt, array(
+            "id" => $user->getId(),
+        ));
 
         return new UserForProvider($user->getUsername(), $user->getPassword(), $user->getSalt(), $user->getRoles());
 
