@@ -45,21 +45,5 @@ class DefaultController extends Controller
         return $this->render('@App/Map/map.html.twig');
     }
 
-    /**
-     * @Route("/vendedores", name="vendedores_index")
-     * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function vendedores(Request $request) {
-        return $this->render('@App/Vendedores/index.html.twig');
-    }
 
-    /**
-     * @Route("/vendedores-menus", name="vendedores_create_menu")
-     * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function vendedoresCreateMenu(Request $request) {
-        return $this->render('@App/Vendedores/createMenu.html.twig');
-    }
 }
