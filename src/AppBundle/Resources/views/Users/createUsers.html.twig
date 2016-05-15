@@ -9,35 +9,59 @@
     .no-float {
         float: none;
     }
+    .errors {
+        color: red;
+    }
 </style>
 
     <div class="full-container">
+
+        {% for message in app.session.flashBag.get("warning") %}
+        <div class="alert alert-danger">
+            <p>{{ message }}</p>
+        </div>
+        {% endfor %}
+
+        <form action="{{ path("admin.users.new") }}" method="post">
         <div class="col-md-7 col-lg-7 col-sm-7 no-float center-block">
             <div class="row">
                 <div class="col-md-6 col-sm-6">
                     <label for="name">Nombre de usuario</label>
-                    <input name="name" type="text" class="form-control">
+                    <input name="name" type="text" class="form-control"
+                        {% if name is defined %}value="{{ name }}" {% endif %}>
+                    <p class="errors">{% if errors.name is defined %} {{ errors.name }}{% endif %}</p>
                 </div>
                 <div class="col-md-6 col-sm-6">
                     <label for="realname">Nombre completo</label>
-                    <input name="realname" type="text" class="form-control">
+                    <input name="realname" type="text" class="form-control"
+                    {% if realname is defined %} value="{{ realname }}"{% endif %}>
+                    <p class="errors">{% if errors.realname is defined %}{{ errors.realname }}{% endif %}</p>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-6 col-sm-6">
                     <label for="email">Correo electronico</label>
-                    <input name="email" type="email" class="form-control">
+                    <input name="email" type="email" class="form-control"
+                    {% if email is defined %}value="{{ email }}"{% endif %}>
+                    <p class="errors">{% if errors.email is defined %}{{ errors.email }}{% endif %}</p>
                 </div>
                 <div class="col-md-6 col-sm-6">
                     <label for="password">Contraseña</label>
                     <input name="password" type="password" class="form-control">
+                    <p class="errors">{% if errors.password is defined %}{{ errors.password }}{% endif %}</p>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-6 col-sm-6">
                     <label for="avatar">Avatar</label>
-                    <input name="avatar" type="file" class="form-control">
+                    <input name="avatar" id="avatar" type="file" class="form-control">
+                    <img src="" alt="" id="thumbnail" class="thumbnail img-responsive"
+                         style="width: 100%; margin-top: 10px; display: none">
+                    <div class="errors" id="errorsAvatar"></div>
                 </div>
+            </div>
+            <div class="row">
+                <input type="hidden" name="avatarId" id="avatarId" value="0">
             </div>
             <div class="row" style="margin-top: 10px">
                 <div class="col-md-6 col-sm-6">
@@ -45,6 +69,53 @@
                 </div>
             </div>
         </div>
+        </form>
     </div>
 
+{% endblock %}
+{% block script %}
+    <script>
+        $("#avatar").change(function (e) {
+            var input = $("#avatar");
+            var file = $(input)[0].files[0];
+            var filename = file.name;
+            var ext = filename.substr(filename.lastIndexOf(".")+1).toLowerCase();
+            //console.log(ext);
+
+            if (ext == "png" || ext == "jpg" || ext == "jpeg" || ext == "bitmap") {
+                {# Clean error field if exist #}
+                $("#errorsAvatar").html("");
+
+                var formData = new FormData();
+                formData.append("file", file);
+                formData.append("extension", ext);
+
+                $.ajax({
+                    url: '{{ path('admin.upload.avatar') }}',
+                    type: "post",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+
+                    success: function (data) {
+                        $("#thumbnail").attr("src", data.path);
+                        $("#thumbnail").show();
+                        $("#avatarId").val(data.id);
+                        console.log(data);
+                    }
+                });
+
+                return;
+            }
+
+            {# Clean all stuff #}
+            $("#errorsAvatar").html("");
+            $("#thumbnail").attr("src", "");
+            $("#thumbnail").hide();
+            $("#avatarId").val("0");
+            $("#errorsAvatar").append("<p>Ups! El tipo de archivo no esta permitido</p>");
+
+        });
+
+    </script>
 {% endblock %}

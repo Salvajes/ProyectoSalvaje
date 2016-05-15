@@ -48,5 +48,11 @@
     </div>
 </div>
 
+<script>
+    {% for message in app.session.flashBag.get("msg") %}
+    alert('{{ message }}');
+    {% endfor %}
+</script>
+
 </body>
 </html>

@@ -21,4 +21,5 @@ class AdminController extends Controller
     {
         return $this->render("AppBundle:Appanel:index.html.twig");
     }
+
 }
