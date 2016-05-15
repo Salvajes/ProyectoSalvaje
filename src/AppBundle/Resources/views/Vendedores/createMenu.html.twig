@@ -12,6 +12,7 @@
         .bar-action li {
             margin-right: 10px;
         }
+
         .editable input[type="text"] {
             padding: 3px 2px;
             border: 1px solid transparent;
@@ -56,13 +57,51 @@
                         "<div class='panel-header'>" +
                             "<span class='editable'><input type='text' value='Titulo'></span>" +
                             "<ul class='bar-action'>" +
+                                "<li class='new-section'>seccion</li>"+
                                 "<li class='close'>&times;</li>"+
-                            "</ul>"
+                            "</ul>" +
                         "</div>" +
                         "<div class='panel-body'>" +
-                            "LISTA" +
-                        "</div>"
+                            "<span class='editable'><input type='text' value='Seccion'></span>" +
+                            "<table>" +
+                                "<thead>" +
+                                    "<tr>" +
+                                        "<td style='width: 200px;'>Platillo</td>" +
+                                        "<td style='width: 200px;'>Precio</td>" +
+                                        "<td style='width: 20px;'></td>" +
+                                    "</tr>" +
+                                "</thead>" +
+                                "<tbody>" +
+                                    "<tr>" +
+                                        "<td><input type='text'></td>" +
+                                        "<td><input type='text'></td>" +
+                                        "<td class='remove-row'>borrar</td>" +
+                                    "</tr>" +
+                                    "<tr>" +
+                                        "<td colspan='2'></td>" +
+                                        "<td class='add-row'>new</td>" +
+                                    "</tr>" +
+                                "</tbody>" +
+                            "</table>" +
+                        "</div>" +
                     "</div>";
+
+        var newMnuStr = "<span class='editable'><input type='text' value='Seccion'></span>" +
+                        "<table>" +
+                            "<thead>" +
+                                "<tr>" +
+                                    "<td>Platillo</td>" +
+                                    "<td>Precio</td>" +
+                                    "<td></td>" +
+                                "</tr>" +
+                            "</thead>" +
+                            "<tbody>" +
+                                "<tr>" +
+                                    "<td colspan='2'></td>" +
+                                    "<td class='add-row'>new</td>" +
+                                "</tr>" +
+                            "</tbody>" +
+                        "</table>";
 
         function createMenuPanel() {
             $("#menus").append(mnuStr);
@@ -72,10 +111,13 @@
             $(panel).remove();
         }
 
-        function replaceToEdit(toEdit) {
-            var text = $(toEdit).text();
-            var input = "<input type=''text class='editing' value='"+ text +"'/>";
-            $(toEdit).replaceWith(input);
+        function addRow(currentTable) {
+            var tr = "<tr>" +
+                        "<td><input type='text'></td>" +
+                        "<td><input type='text'></td>" +
+                        "<td class='remove-row'>remove</td>" +
+                    "</tr>";
+            $(currentTable + " tr:last-of-type").before(tr);
         }
 
         $(document).ready(function() {
@@ -88,10 +130,15 @@
                 var panel = $(this).closest(".panel");
                 closeMenuPanel(panel);
             });
-
-            $("#menus").on("click", ".panel .editable", function() {
+            $("#menus").on("click", ".panel .new-section", function() {
                 //replaceToEdit(this);
             });
+            $("#menus").on("click", ".panel .add-row", function() {
+                var currentTable = $(this).closest('table');
+                addRow(currentTable);
+            });
+
+
 
         });
 
