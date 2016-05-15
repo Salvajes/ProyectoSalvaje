@@ -25,4 +25,12 @@ class vendedoresController extends Controller
     public function vendedoresCreateMenuAction(Request $request) {
         return $this->render('@App/Vendedores/createMenu.html.twig');
     }
+
+    /**
+     * @param Request $request
+     * @param $id
+     */
+    public function vendedoresEditMenuAction(Request $request, $id) {
+
+    }
 }
